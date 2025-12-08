@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Government-Supported Digital Security &amp; AI | Urban Sentinel</title>
+
+  <meta name="description" content="AI-driven cyber security, SEO and digital transformation for Australian businesses, aligned with government digital and cyber uplift priorities." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Government-Supported Digital Security &amp; AI | Urban Sentinel" />
+  <meta property="og:description" content="Turn government-backed digital and cyber priorities into real upgrades: stronger security, smarter AI and SEO that actually performs." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-alt: #0e1220;
+      --accent: #32e6b7;
+      --accent-soft: rgba(50, 230, 183, 0.14);
+      --accent-strong: rgba(50, 230, 183, 0.28);
+      --text-main: #f5f7ff;
+      --text-muted: #a6b0d8;
+      --border-subtle: #1b2135;
+      --danger: #ff4664;
+      --shadow-soft: 0 24px 60px rgba(0,0,0,0.7);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #151a33 0, #050814 55%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      padding: 0 16px 48px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto 72px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom,
+        rgba(5,8,20,0.92),
+        rgba(5,8,20,0.88),
+        rgba(5,8,20,0.78)
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 20% 0, #4df1ff 0, transparent 45%),
+        radial-gradient(circle at 80% 100%, #32e6b7 0, transparent 58%),
+        radial-gradient(circle at 50% 50%, #050814 0, #050814 60%);
+      border: 1px solid rgba(146, 233, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(77,241,255,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-shield {
+      width: 18px;
+      height: 22px;
+      border-radius: 9px;
+      border: 1px solid rgba(240, 249, 255, 0.9);
+      position: relative;
+    }
+
+    .logo-shield::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 7px;
+      border: 1px solid rgba(50,230,183,0.9);
+      box-shadow: 0 0 16px rgba(50,230,183,0.7);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-brand-title {
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-sub {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(10, 200, 160, 0.15);
+      border: 1px solid rgba(50, 230, 183, 0.42);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(50,230,183,1);
+    }
+
+    main {
+      margin-top: 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      gap: 32px;
+      padding: 26px 22px 28px;
+      background: radial-gradient(circle at top left, #1c2344 0, #050814 55%);
+      border-radius: var(--ra
