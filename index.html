@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Government-Supported Digital Security &amp; AI | Urban Sentinel</title>
+
+  <meta name="description" content="AI-driven cyber security, SEO and digital transformation for Australian businesses, aligned with government digital and cyber uplift priorities." />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Government-Supported Digital Security &amp; AI | Urban Sentinel" />
+  <meta property="og:description" content="Turn government-backed digital and cyber priorities into real upgrades: stronger security, smarter AI and SEO that actually performs." />
+  <meta property="og:type" content="website" />
+
+  <style>
+    :root {
+      --bg: #050814;
+      --bg-alt: #0e1220;
+      --accent: #32e6b7;
+      --accent-soft: rgba(50, 230, 183, 0.14);
+      --accent-strong: rgba(50, 230, 183, 0.28);
+      --text-main: #f5f7ff;
+      --text-muted: #a6b0d8;
+      --border-subtle: #1b2135;
+      --danger: #ff4664;
+      --shadow-soft: 0 24px 60px rgba(0,0,0,0.7);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #151a33 0, #050814 55%);
+      color: var(--text-main);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      padding: 0 16px 48px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto 72px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom,
+        rgba(5,8,20,0.92),
+        rgba(5,8,20,0.88),
+        rgba(5,8,20,0.78)
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background:
+        radial-gradient(circle at 20% 0, #4df1ff 0, transparent 45%),
+        radial-gradient(circle at 80% 100%, #32e6b7 0, transparent 58%),
+        radial-gradient(circle at 50% 50%, #050814 0, #050814 60%);
+      border: 1px solid rgba(146, 233, 255, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 24px rgba(77,241,255,0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo-shield {
+      width: 18px;
+      height: 22px;
+      border-radius: 9px;
+      border: 1px solid rgba(240, 249, 255, 0.9);
+      position: relative;
+    }
+
+    .logo-shield::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: 7px;
+      border: 1px solid rgba(50,230,183,0.9);
+      box-shadow: 0 0 16px rgba(50,230,183,0.7);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-brand-title {
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-sub {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(10, 200, 160, 0.15);
+      border: 1px solid rgba(50, 230, 183, 0.42);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(50,230,183,1);
+    }
+
+    main {
+      margin-top: 28px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
+      gap: 32px;
+      padding: 26px 22px 28px;
+      background: radial-gradient(circle at top left, #1c2344 0, #050814 55%);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(101, 132, 238, 0.4);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(50,230,183,0.18) 0, transparent 60%);
+      top: -60px;
+      right: -40px;
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(26px, 4vw, 34px);
+      line-height: 1.1;
+      margin: 10px 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-left p {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 520px;
+      margin: 0 0 16px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 14px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 550;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.08s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #32e6b7, #4df1ff);
+      color: #020308;
+      box-shadow: 0 12px 30px rgba(50, 230, 183, 0.55);
+    }
+
+    .btn-primary span.icon {
+      font-size: 15px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(50, 230, 183, 0.7);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      background: rgba(12, 16, 40, 0.7);
+      color: var(--text-main);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(25, 33, 81, 0.9);
+      border-color: rgba(255,255,255,0.34);
+      text-decoration: none;
+    }
+
+    .hero-footnote {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .hero-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 360px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(100, 132, 240, 0.6);
+      background: radial-gradient(circle at top, rgba(15,52,96,0.96), rgba(7,12,33,0.98));
+      padding: 14px 14px 16px;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(178, 199, 255, 0.98);
+      margin-bottom: 6px;
+    }
+
+    .panel-main {
+      display: grid;
+      grid-template-columns: 1.3fr 1.7fr;
+      gap: 12px;
+      align-items: stretch;
+      margin-bottom: 10px;
+    }
+
+    .panel-shield {
+      border-radius: 16px;
+      padding: 10px;
+      background: radial-gradient(circle at 0 0, rgba(77,241,255,0.3) 0, transparent 55%),
+                  radial-gradient(circle at 100% 100%, rgba(50,230,183,0.4) 0, transparent 75%),
+                  #050814;
+      border: 1px solid rgba(139, 214, 255, 0.7);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel-shield-inner {
+      width: 70px;
+      height: 88px;
+      border-radius: 26px;
+      border: 1px solid rgba(234, 244, 255, 0.9);
+      position: relative;
+      box-shadow: 0 0 20px rgba(77,241,255,0.7);
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 0, rgba(77,241,255,0.2), transparent 65%),
+                  linear-gradient(180deg, rgba(5,12,35,0.9), rgba(5,12,35,1));
+    }
+
+    .panel-shield-inner::before,
+    .panel-shield-inner::after {
+      content: "";
+      position: absolute;
+      inset: 5px 7px;
+      border-radius: 20px;
+      border: 1px solid rgba(50,230,183,0.85);
+      box-shadow: 0 0 22px rgba(50,230,183,0.9);
+    }
+
+    .panel-grid {
+      position: absolute;
+      inset: 11px;
+      border-radius: 18px;
+      background-image:
+        linear-gradient(rgba(130, 210, 255, 0.13) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(130, 210, 255, 0.13) 1px, transparent 1px);
+      background-size: 11px 11px;
+      opacity: 0.75;
+    }
+
+    .panel-node {
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #32e6b7;
+      box-shadow: 0 0 10px rgba(50,230,183,1);
+    }
+    .panel-node:nth-child(1) { top: 14px; left: 22px; }
+    .panel-node:nth-child(2) { bottom: 18px; right: 26px; }
+    .panel-node:nth-child(3) { top: 34px; right: 18px; }
+    .panel-node:nth-child(4) { bottom: 24px; left: 26px; }
+
+    .panel-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .panel-meta h3 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: -0.01em;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(124, 148, 244, 0.7);
+      background: rgba(12,22,64,0.85);
+      font-size: 11px;
+      color: #dbe3ff;
+      white-space: nowrap;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 11px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-value {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .panel-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 6px;
+      margin-top: 6px;
+    }
+
+    .dot-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(50,230,183,1);
+    }
+
+    .danger-text {
+      color: var(--danger);
+      font-weight: 500;
+    }
+
+    .section {
+      margin-top: 42px;
+      padding: 24px 22px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(43,61,122,0.32), rgba(5,8,20,0.98));
+    }
+
+    .section h2 {
+      font-size: 22px;
+      margin: 0 0 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .section p {
+      margin: 0 0 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .section strong {
+      color: #eaf0ff;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 4px;
+      font-size: 11px;
+    }
+
+    .chip {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(8,16,40,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 22px;
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .card-soft {
+      background: rgba(3,8,28,0.9);
+      border-radius: var(--radius-lg);
+      padding: 14px 14px 13px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .card-soft h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .list {
+      margin: 6px 0 0;
+      padding-left: 18px;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .list li {
+      margin-bottom: 4px;
+    }
+
+    .pill-section {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      margin-top: 6px;
+    }
+
+    .pill-small {
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(13,18,40,0.9);
+      color: var(--text-muted);
+    }
+
+    .highlight-box {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(50,230,183,0.5);
+      font-size: 13px;
+      color: #d4fff3;
+    }
+
+    .highlight-box strong {
+      color: #ffffff;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 20px;
+      margin-top: 14px;
+    }
+
+    .tagline {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .callout {
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(19, 27, 60, 0.9);
+      border: 1px dashed rgba(255,255,255,0.18);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .callout strong {
+      color: #ffffff;
+    }
+
+    .list-plain {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .badge-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(255, 58, 58, 0.12);
+      border: 1px solid rgba(255, 70, 100, 0.6);
+      color: var(--danger);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .badge-red span {
+      font-size: 13px;
+    }
+
+    .faq-item {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(8,12,30,0.92);
+      border: 1px solid rgba(255,255,255,0.05);
+      font-size: 13px;
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .cta-final {
+      text-align: left;
+      margin-top: 14px;
+    }
+
+    .cta-final p {
+      font-size: 14px;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 18px;
+      font-size: 11px;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    footer a {
+      color: var(--accent);
+    }
+
+    .footer-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .footer-contact a {
+      text-decoration: none;
+    }
+
+    .footer-chip {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(5,8,22,0.9);
+    }
+
+    @media (max-width: 800px) {
+      body {
+        padding: 0 10px 36px;
+      }
+
+      .nav {
+        padding-inline: 4px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 20px 16px 22px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .section {
+        padding: 18px 14px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="logo-mark" aria-hidden="true">
+          <div class="logo-shield"></div>
+        </div>
+        <div class="nav-brand">
+          <span class="nav-brand-title">Urban Sentinel</span>
+          <span class="nav-brand-sub">AI-Driven Digital Security</span>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#why">Why this exists</a>
+        <a href="#alignment">Government alignment</a>
+        <a href="#services">What we deliver</a>
+        <a href="#fit">Who it&#39;s for</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="top">
+        <div class="hero-left">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Government-aligned digital security
+          </div>
+          <h1>Government-Supported Digital Security &amp; AI Transformation for Australian Businesses</h1>
+          <p>
+            Turn government-backed digital and cyber priorities into real upgrades:
+            stronger security, smarter AI, and SEO that actually brings you customers —
+            not just clicks.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">
+              <span class="icon">⚡</span>
+              <span>Book a 20-Minute Alignment Call</span>
+            </a>
+            <a href="#process" class="btn btn-ghost">
+              See the upgrade process
+            </a>
+          </div>
+
+          <div class="hero-footnote">
+            Built for Australian SMEs • Based in Queensland • AI-driven, human-led
+          </div>
+        </div>
+
+        <div class="hero-right" aria-hidden="true">
+          <div class="panel">
+            <div class="panel-tag">Live risk &amp; visibility snapshot</div>
+            <div class="panel-main">
+              <div class="panel-shield">
+                <div class="panel-shield-inner">
+                  <div class="panel-grid"></div>
+                  <div class="panel-node"></div>
+                  <div class="panel-node"></div>
+                  <div class="panel-node"></div>
+                  <div class="panel-node"></div>
+                </div>
+              </div>
+              <div class="panel-meta">
+                <h3>Digital Asset Integrity</h3>
+                <p style="margin:0;color:var(--text-muted);">
+                  Where cyber security, AI and SEO collide: the part of your business
+                  that gets hacked, judged and ranked.
+                </p>
+                <div class="pill-row">
+                  <div class="pill">AI-Assisted SEO</div>
+                  <div class="pill">WAF &amp; Bot Filtering</div>
+                  <div class="pill">Schema &amp; Structure</div>
+                </div>
+                <div class="stat-row">
+                  <div>
+                    <div class="stat-label">Breach likelihood</div>
+                    <div class="danger-text">Too high if you do nothing</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="stat-label">Upgrade impact</div>
+                    <div class="stat-value">Security ↑, Rankings ↑</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel-footer">
+              <div class="dot-row">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <span>Every unsecured site is free training data for hackers.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Why this exists -->
+      <section class="section" id="why">
+        <h2>Your Business Is Being Judged on Security, Speed and Trust</h2>
+        <p>
+          The Australian Government keeps repeating the same warning:
+          <strong>small businesses must lift their digital and cyber game</strong> —
+          or get left behind.
+        </p>
+        <p>
+          At the same time:
+        </p>
+        <ul class="list">
+          <li>Cyber attacks on small businesses are constant and expensive.</li>
+          <li>Customers vanish the second a site feels dodgy or painfully slow.</li>
+          <li>Search engines quietly bury insecure, slow, poorly structured sites.</li>
+        </ul>
+        <p>
+          You don&#39;t just need “an IT guy” or someone who “does SEO”.
+          You need <strong>a partner who treats your website like critical infrastructure</strong> — not a digital brochure.
+        </p>
+        <p>
+          That&#39;s where Urban Sentinel comes in.
+        </p>
+      </section>
+
+      <!-- SECTION: Government alignment -->
+      <section class="section" id="alignment">
+        <h2>We Align Your Upgrades With Existing Government Priorities</h2>
+        <p>
+          We <strong>do not</strong> slap a fake logo on your site and pretend Canberra is paying your bills.
+        </p>
+        <p>
+          Instead, we design your upgrades so they sit neatly alongside the kind of programs and priorities Australia already funds and promotes:
+        </p>
+
+        <div class="grid-2">
+          <div class="card-soft">
+            <h3>Digital Capability &amp; Online Growth</h3>
+            <p>
+              Work aligned with initiatives that push digital capability, online selling,
+              marketing and secure use of technology for small business.
+            </p>
+            <ul class="list">
+              <li>Structured, measurable digital uplift.</li>
+              <li>Focus on secure online presence, not just “having a website”.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>Cyber Security &amp; Resilience</h3>
+            <p>
+              Upgrades that make you harder to hack and faster to recover,
+              mapped against national cyber resilience guidance.
+            </p>
+            <ul class="list">
+              <li>Controls, not buzzwords.</li>
+              <li>Documented changes you can actually show to advisors.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>AI &amp; Emerging Tech Readiness</h3>
+            <p>
+              Practical steps so AI enhances your business instead of leaking your data
+              or creating compliance headaches.
+            </p>
+            <ul class="list">
+              <li>Safe AI use-cases.</li>
+              <li>Clear guardrails for staff and systems.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>Technology Investment &amp; Modernisation</h3>
+            <p>
+              Modernisation work that can be described in language accountants,
+              advisors and grant consultants understand.
+            </p>
+            <ul class="list">
+              <li>Security, performance and reliability improvements.</li>
+              <li>Evidence that you take digital risk seriously.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <strong>Plain English version:</strong> when we design your security, AI and SEO upgrades,
+          we make sure they can be explained in the same language government programs and advisors use.
+          No fake promises. No “guaranteed grant” nonsense. Just real work you can defend.
+        </div>
+      </section>
+
+      <!-- SECTION: What we deliver -->
+      <section class="section" id="services">
+        <h2>From Leaky Website to Hardened, AI-Ready Asset</h2>
+        <p>
+          We focus on the intersection of <strong>digital security, AI and visibility</strong> —
+          the parts of your business that live online and can be attacked, exploited, or ignored by search engines.
+        </p>
+
+        <div class="grid-2">
+          <div class="card-soft">
+            <h3>1. Cyber Security &amp; Website Hardening</h3>
+            <ul class="list">
+              <li>Lock down admin panels, forms and logins.</li>
+              <li>Apply WAF rules and intelligent bot filtering.</li>
+              <li>Secure DNS, SSL/TLS and baseline network protections.</li>
+              <li>Patch obvious holes that attackers love.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>2. AI-Assisted SEO &amp; Performance</h3>
+            <ul class="list">
+              <li>Technical SEO so your site isn&#39;t treated like spam.</li>
+              <li>AI-assisted keyword and intent analysis for Australian search behaviour.</li>
+              <li>Performance tuning: speed, caching, image optimisation.</li>
+              <li>Structured data/schema so you appear correctly in search.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>3. AI Readiness &amp; Digital Risk Consulting</h3>
+            <ul class="list">
+              <li>Map where AI can safely automate or enhance operations.</li>
+              <li>Spot where AI increases risk: privacy, data leakage, compliance.</li>
+              <li>Set rules so staff don&#39;t feed crown-jewel data into public models.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>4. Monitoring &amp; Straight-Talk Reporting</h3>
+            <ul class="list">
+              <li>Simple, human-readable security and SEO reports.</li>
+              <li>Alerts when something breaks, slows down, or looks suspicious.</li>
+              <li>Clear &ldquo;this changed, here&#39;s why it matters, here&#39;s what we did.&rdquo;</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="margin-top:14px;">
+          You end up with a website and digital footprint that are
+          <strong>harder to hack, easier to trust, and easier to monetise.</strong>
+        </p>
+      </section>
+
+      <!-- SECTION: Who this is for -->
+      <section class="section" id="fit">
+        <h2>Is This Service for You?</h2>
+
+        <div class="two-col">
+          <div>
+            <div class="tagline">This <strong>is</strong> built for you if:</div>
+            <ul class="list">
+              <li>You&#39;re an Australian business with an ABN.</li>
+              <li>You care about cyber risk, compliance and reputation.</li>
+              <li>You want your website to be an asset, not a liability.</li>
+              <li>You&#39;re open to using AI — but want it done safely.</li>
+            </ul>
+          </div>
+          <div>
+            <div class="tagline">This is <strong>not</strong> for you if:</div>
+            <ul class="list">
+              <li>You only want &ldquo;the cheapest website possible&rdquo;.</li>
+              <li>You expect someone to guarantee a grant before any work.</li>
+              <li>You refuse to read even a one-page summary of your risk.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Process -->
+      <section class="section" id="process">
+        <h2>How Our Government-Supported Upgrade Works</h2>
+
+        <div class="grid-2">
+          <div class="card-soft">
+            <h3>Step 1 — 20-Minute Alignment Call (Free)</h3>
+            <p>
+              We ask blunt questions about your current setup, risk and goals.
+              You walk away knowing whether we&#39;re a fit and whether your plans
+              line up with current digital and cyber priorities.
+            </p>
+          </div>
+          <div class="card-soft">
+            <h3>Step 2 — Digital Security &amp; AI Readiness Audit</h3>
+            <p>
+              We review your website security, hosting, DNS, protection layers,
+              SEO baseline, technical performance and any current AI usage.
+            </p>
+            <p>
+              You receive a short, ruthless report: <strong>what&#39;s broken, what&#39;s risky,
+              what&#39;s wasting money.</strong>
+            </p>
+          </div>
+          <div class="card-soft">
+            <h3>Step 3 — Government-Aligned Upgrade Plan</h3>
+            <p>
+              We design a practical implementation plan that can be shared with
+              your accountant, advisors or grant consultants, including:
+            </p>
+            <ul class="list">
+              <li>Security controls and configurations.</li>
+              <li>SEO and performance upgrades.</li>
+              <li>AI use cases and safeguards.</li>
+              <li>Rough cost and timeline.</li>
+            </ul>
+          </div>
+          <div class="card-soft">
+            <h3>Step 4 — Implementation &amp; Ongoing Support</h3>
+            <p>
+              If you approve the plan, we execute: hardening, optimisation and AI enablement,
+              followed by monitoring, reporting and review at agreed intervals.
+            </p>
+            <p>
+              No fluff. No silver bullets. Just upgrades.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: Compliance -->
+      <section class="section" id="fine-print">
+        <div class="badge-red">
+          <span>!</span> No fake endorsements. No bullshit.
+        </div>
+        <h2>What We Will Never Lie About</h2>
+        <p>
+          Urban Sentinel is an <strong>independent provider</strong>, not a government agency.
+          We do <strong>not</strong> guarantee grants, tax offsets or approvals.
+          Eligibility for any funding, rebate or tax treatment is always decided by the relevant
+          government body or your accountant — not us.
+        </p>
+        <p>
+          What we <strong>do</strong> is design and implement digital security, AI and SEO upgrades
+          that are serious, defensible, and aligned with what Australia keeps saying it wants
+          businesses to do with their digital infrastructure.
+        </p>
+        <div class="callout">
+          <strong>If you want sugar-coating and buzzwords, there are agencies for that.</strong><br />
+          If you want straight answers and actual protection, that&#39;s us.
+        </div>
+      </section>
+
+      <!-- SECTION: FAQ -->
+      <section class="section" id="faq">
+        <h2>FAQ</h2>
+
+        <div class="faq-item">
+          <strong>Is this service government funded?</strong>
+          <span>
+            No. We are not funded or endorsed by the government. We simply design and implement upgrades
+            that line up with current digital and cyber priorities, so when you talk to advisors,
+            you&#39;re not speaking gibberish.
+          </span>
+        </div>
+
+        <div class="faq-item">
+          <strong>Can you guarantee I&#39;ll get a grant or rebate?</strong>
+          <span>
+            No. No one ethical can. What we can do is make sure the work we do is documented and
+            described in a way that makes sense for your accountant, advisors and any application
+            you choose to make.
+          </span>
+        </div>
+
+        <div class="faq-item">
+          <strong>Do you replace my IT provider or web developer?</strong>
+          <span>
+            Not necessarily. We&#39;re happy to work alongside your existing IT team, devs or MSP.
+            Our focus is the <strong>security, AI and SEO intersection</strong> — the part that often
+            falls through the cracks.
+          </span>
+        </div>
+
+        <div class="faq-item">
+          <strong>Do you only work in Queensland?</strong>
+          <span>
+            We&#39;re based in Queensland and proud of it, but we work with businesses across Australia.
+          </span>
+        </div>
+      </section>
+
+      <!-- SECTION: Final CTA -->
+      <section class="section" id="contact">
+        <h2>Ready to Turn &ldquo;We Should Do Something About Cyber&rdquo; Into &ldquo;Done&rdquo;?</h2>
+        <div class="cta-final">
+          <p>
+            If your website went down for a week or leaked customer data tomorrow,
+            would you still think “we&#39;ll sort it later” was a good strategy?
+          </p>
+          <div class="hero-ctas" style="margin-top:10px;">
+            <!-- Update phone/email to whatever you prefer -->
+            <a href="mailto:info@urbansentinel.com.au?subject=Gov-supported%20Digital%20Security%20&amp;body=I&#39;d%20like%20to%20book%20a%2020-minute%20alignment%20call."
+               class="btn btn-primary">
+              <span class="icon">📧</span>
+              <span>Request an Alignment Call</span>
+            </a>
+            <a href="tel:+61467590184" class="btn btn-ghost">
+              Call from Australia: +61&nbsp;467&nbsp;590&nbsp;184
+            </a>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">
+            Prefer another channel? Use the call or email above and ask for the
+            <strong>&ldquo;Government-Supported Digital Security &amp; AI Upgrade&rdquo;</strong>.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-row">
+        <div>© <span id="year"></span> Urban Sentinel. All rights reserved.</div>
+        <div class="footer-contact">
+          <span class="footer-chip">Based in Queensland, Australia</span>
+          <a class="footer-chip" href="#top">Back to top ↑</a>
+        </div>
+      </div>
+      <div>
+        This page describes a service <strong>aligned with</strong> public digital and cyber priorities.
+        It does not claim government endorsement or funding. Always seek independent legal, financial
+        or tax advice before relying on any incentive, grant or rebate.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
