@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI SEO Security & Digital Uplift | Urban Sentinel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Surface scan your website, explore AI SEO Security packages and understand how your digital uplift can align with Australian government grant priorities."
+  />
+  <style>
+    :root {
+      --bg: #050914;
+      --bg-alt: #0c1222;
+      --card: #111829;
+      --accent: #1a4c7c;
+      --accent-soft: #142c4a;
+      --text: #e6edf7;
+      --muted: #94a3b8;
+      --danger: #f97373;
+      --success: #4ade80;
+      --warning: #fbbf24;
+      --border: #1f2937;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: #7dd3fc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header, main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3rem;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #020617, #0b1220);
+      border-radius: 16px;
+      padding: 2.25rem 2rem;
+      border: 1px solid #1f2937;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+      margin-top: 1.5rem;
+    }
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.75rem;
+      color: #e5f0ff;
+    }
+    .lead {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      border-color: #1d4ed8;
+      color: #e5f0ff;
+    }
+    .btn-outline {
+      background: transparent;
+      border-color: #374151;
+      color: var(--muted);
+    }
+    .hero-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* SECTIONS */
+    section {
+      margin-top: 2.5rem;
+      background: rgba(2, 6, 23, 0.7);
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem 2rem;
+      border: 1px solid #111827;
+    }
+    section.alt { background: rgba(15, 23, 42, 0.9); }
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: #e5f0ff;
+    }
+    h3 {
+      margin-top: 0.5rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.03rem;
+      color: #e5f0ff;
+    }
+    p { font-size: 0.95rem; }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+    }
+    @media (min-width: 800px) {
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 1rem 1rem 1.1rem;
+      font-size: 0.9rem;
+    }
+    .card.danger {
+      border-color: #7f1d1d;
+      background: radial-gradient(circle at top left, #3f1d1d, #050816);
+    }
+    ul {
+      padding-left: 1.1rem;
+      margin: 0.4rem 0 0;
+      font-size: 0.9rem;
+    }
+    li { margin-bottom: 0.25rem; }
+
+    .note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+    }
+
+    /* SCAN WIDGET */
+    .scan-widget {
+      margin-top: 1rem;
+      background: #020617;
+      border-radius: var(--radius);
+      border: 1px solid #1f2937;
+      padding: 1rem 1rem 1.2rem;
+    }
+    .scan-widget label {
+      font-size: 0.86rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .scan-input-row {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    .scan-input-row span {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .scan-input-row input {
+      flex: 1;
+      padding: 0.55rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: var(--text);
+      font-size: 0.9rem;
+      outline: none;
+    }
+    .scan-input-row button {
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid #1d4ed8;
+      background: var(--accent);
+      color: #e5f0ff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .scan-error {
+      color: var(--danger);
+      font-size: 0.85rem;
+    }
+    .scan-result {
+      margin-top: 0.8rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed #1f2937;
+      font-size: 0.9rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      margin-left: 0.3rem;
+    }
+    .badge-fast { background: rgba(34, 197, 94, 0.2); color: var(--success); }
+    .badge-moderate { background: rgba(234, 179, 8, 0.15); color: var(--warning); }
+    .badge-slow { background: rgba(248, 113, 113, 0.18); color: var(--danger); }
+    .badge-unknown { background: rgba(148, 163, 184, 0.2); color: var(--muted); }
+
+    /* PACKAGES */
+    .package-price {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+    .package-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* FOOT */
+    footer {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <div class="hero-eyebrow">Urban Sentinel – AI SEO Security</div>
+      <h1>Scan, Harden and Uplift Your Digital Footprint</h1>
+      <p class="lead">
+        This page gives you a quick surface scan of your domain, outlines AI SEO Security packages
+        and explains how your digital uplift can align with Australian government grant priorities.
+        No bullshit, no fake “fully-funded” promises.
+      </p>
+      <div class="hero-actions">
+        <a href="#scan" class="btn btn-primary">Run a surface scan</a>
+        <a href="#packages" class="btn btn-outline">View AI SEO Security packages</a>
+        <a href="#grants" class="btn btn-outline">Check grant alignment</a>
+      </div>
+      <p class="hero-meta">
+        This scanner is high-level only. It does not replace a full security audit or penetration test.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- SCAN SECTION -->
+    <section id="scan">
+      <h2>1. Surface scan your domain</h2>
+      <p>
+        Enter your primary website domain. We’ll run a lightweight, automated surface check using public
+        information only — focusing on basic speed, HTTPS reachability and whether your DNS suggests edge
+        protection like Cloudflare. You’ll see a simple summary, not a step-by-step fix guide.
+      </p>
+
+      <div class="scan-widget">
+        <form id="scanForm">
+          <label for="domain">Website domain to scan</label>
+          <div class="scan-input-row">
+            <span>https://</span>
+            <input
+              id="domain"
+              name="domain"
+              type="text"
+              placeholder="example.com"
+              autocomplete="off"
+            />
+            <button type="submit" id="scanButton">Run surface scan</button>
+          </div>
+          <div id="scanError" class="scan-error" style="display:none;"></div>
+        </form>
+
+        <div id="scanResult" class="scan-result" style="display:none;"></div>
+      </div>
+
+      <p class="note">
+        This tool only uses public information accessible from the browser. It cannot see private
+        configuration inside your hosting, Cloudflare or other platforms. It’s designed to flag obvious
+        risk and performance issues, not to expose your full setup.
+      </p>
+    </section>
+
+    <!-- PACKAGES SECTION -->
+    <section id="packages" class="alt">
+      <h2>2. AI SEO Security packages</h2>
+      <p>
+        Every site is different, but most businesses fall into one of these three patterns. Final pricing
+        depends on risk, complexity and scope — these ranges are for guidance and planning only.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="package-tag">Package 1</div>
+          <h3>Essentials Hardening &amp; SEO Foundation</h3>
+          <div class="package-price">Approx. $950 – $1,850</div>
+          <ul>
+            <li>Lock down admin and contact forms.</li>
+            <li>Basic firewall rules and bot filtering.</li>
+            <li>Core SSL / HTTPS hygiene review.</li>
+            <li>Fix obvious technical SEO errors.</li>
+            <li>Image and asset optimisation for speed.</li>
+          </ul>
+          <p class="note">
+            Best for small brochure sites, trades, local services and early-stage businesses.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="package-tag">Package 2</div>
+          <h3>Full AI SEO Security Uplift</h3>
+          <div class="package-price">Approx. $2,500 – $5,500</div>
+          <ul>
+            <li>Deeper hardening across hosting, DNS and WAF.</li>
+            <li>AI-assisted keyword and intent analysis.</li>
+            <li>Structured data and crawlability improvements.</li>
+            <li>Performance tuning across key templates.</li>
+            <li>AI readiness and digital risk review.</li>
+          </ul>
+          <p class="note">
+            Designed for businesses that rely on their website for real lead flow or revenue.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="package-tag">Package 3</div>
+          <h3>Ongoing Monitoring &amp; Optimisation</h3>
+          <div class="package-price">$290 – $690 / month</div>
+          <ul>
+            <li>Regular security and uptime checks.</li>
+            <li>Performance and core-web-vitals tracking.</li>
+            <li>Lightweight SEO adjustments each month.</li>
+            <li>Alerting when something breaks or slows down.</li>
+            <li>Quarterly review of AI + digital risk posture.</li>
+          </ul>
+          <p class="note">
+            For organisations that want their digital footprint treated like infrastructure, not a one-off project.
+          </p>
+        </div>
+      </div>
+
+      <p class="note">
+        All work is documented so you can share it with internal stakeholders, accountants or grant advisors.
+      </p>
+    </section>
+
+    <!-- GRANTS SECTION -->
+    <section id="grants">
+      <h2>3. Is your uplift likely to align with a government grant?</h2>
+      <p>
+        Programs change constantly, but the pattern is similar: governments will often support
+        <strong>digital capability uplift, cyber security resilience, AI readiness and sometimes strategic
+          digital marketing or website upgrades</strong> — especially when they improve competitiveness,
+        productivity or export potential.
+      </p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Signals you may be eligible</h3>
+          <ul>
+            <li>You have an active ABN and operate in Australia.</li>
+            <li>You’re a for-profit business, not a hobby or side project.</li>
+            <li>You rely on digital systems: website, cloud apps, email, CRM, etc.</li>
+            <li>Your revenue and headcount sit inside “small business” ranges for your state.</li>
+            <li>
+              You can show that digital security, AI and online visibility will improve your
+              competitiveness, customer experience or growth.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card danger">
+          <h3>Common reasons businesses are not eligible</h3>
+          <ul>
+            <li>Sole traders with no real digital operations.</li>
+            <li>Not located in the region the grant actually covers.</li>
+            <li>Revenue above the program cap or too many employees.</li>
+            <li>
+              Trying to fund excluded items only – such as CCTV, alarm systems, generic hardware or wages.
+            </li>
+            <li>
+              Wanting a <strong>pure marketing or SEO-only campaign</strong> with no security or capability uplift.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <p>
+        Some programs (for example, Business Basics and other small-business digital grants in Australia)
+        specifically support activities like <strong>strategic marketing services, website build/upgrades
+        and digital marketing strategy</strong> when they clearly enhance digital capabilities and business
+        performance. Your exact eligibility depends on your state, sector, revenue and timing of the grant
+        round.
+      </p>
+
+      <p>
+        Urban Sentinel does <strong>not</strong> lodge applications on your behalf and we never guarantee
+        funding. What we do is:
+      </p>
+      <ul>
+        <li>Deliver serious digital security, AI and SEO uplift work.</li>
+        <li>Document the changes in plain English plus technical detail underneath.</li>
+        <li>
+          Provide a Government-Aligned Digital Security Uplift Plan (GADS-UP) you can use as evidence with
+          your accountant, advisor or grant consultant.
+        </li>
+      </ul>
+
+      <p class="note">
+        Always check the latest guidelines for the specific program you’re considering, or speak with a
+        qualified advisor. Grants are a bonus, not a guarantee.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Urban Sentinel Pty Ltd · AI-Driven Digital Security &amp; Patrols · This page is informational only and
+    does not constitute financial or legal advice.
+  </footer>
+
+  <script>
+    const form = document.getElementById("scanForm");
+    const domainInput = document.getElementById("domain");
+    const errorEl = document.getElementById("scanError");
+    const resultEl = document.getElementById("scanResult");
+    const button = document.getElementById("scanButton");
+
+    function normaliseDomain(value) {
+      if (!value) return "";
+      return value
+        .trim()
+        .replace(/^https?:\/\//i, "")
+        .replace(/\/.*$/, "");
+    }
+
+    async function scanDomain(domain) {
+      const result = {
+        domain,
+        latencyMs: null,
+        speedCategory: "Unknown",
+        httpsWorking: null,
+        usesCloudflare: null
+      };
+
+      // DNS / Cloudflare check via Google DNS
+      try {
+        const res = await fetch(
+          "https://dns.google/resolve?name=" +
+            encodeURIComponent(domain) +
+            "&type=NS"
+        );
+        if (res.ok) {
+          const data = await res.json();
+          const answers = data.Answer || [];
+          const nsNames = answers.map((a) => String(a.data || "").toLowerCase());
+          const usesCf = nsNames.some((n) => n.includes("cloudflare"));
+          result.usesCloudflare = usesCf;
+        }
+      } catch (e) {
+        result.usesCloudflare = null;
+      }
+
+      // Simple speed / HTTPS reachability check using favicon
+      result.speedCategory = "Unknown";
+      return new Promise((resolve) => {
+        const img = new Image();
+        const start = performance.now();
+        let done = false;
+
+        const finish = (status) => {
+          if (done) return;
+          done = true;
+          const duration = performance.now() - start;
+          result.latencyMs = Math.round(duration);
+
+          if (status === "timeout") {
+            result.speedCategory = "No response / very slow";
+          } else if (duration < 800) {
+            result.speedCategory = "Fast";
+          } else if (duration < 2000) {
+            result.speedCategory = "Moderate";
+          } else {
+            result.speedCategory = "Slow";
+          }
+
+          result.httpsWorking = status === "ok";
+          resolve(result);
+        };
+
+        const timer = setTimeout(() => finish("timeout"), 5000);
+
+        img.onload = () => {
+          clearTimeout(timer);
+          finish("ok");
+        };
+        img.onerror = () => {
+          clearTimeout(timer);
+          finish("error");
+        };
+
+        img.src =
+          "https://" + domain + "/favicon.ico?cacheBust=" + Date.now();
+      });
+    }
+
+    function renderResult(data) {
+      if (!data) {
+        resultEl.style.display = "none";
+        return;
+      }
+
+      const speedBadgeClass =
+        data.speedCategory === "Fast"
+          ? "badge-fast"
+          : data.speedCategory === "Moderate"
+          ? "badge-moderate"
+          : data.speedCategory === "Slow" ||
+            data.speedCategory === "No response / very slow"
+          ? "badge-slow"
+          : "badge-unknown";
+
+      const cfText =
+        data.usesCloudflare === true
+          ? "DNS suggests your domain is using Cloudflare name servers. That usually means some level of edge protection, but configuration quality still matters."
+          : data.usesCloudflare === false
+          ? "We did not detect Cloudflare name servers. Your edge protection may rely on your hosting provider or another service."
+          : "We could not reliably read DNS information for edge protection.";
+
+      const httpsText =
+        data.httpsWorking === true
+          ? "We could reach your site over HTTPS during this simple check."
+          : "We could not confidently reach your site over HTTPS using this method. That can indicate SSL/TLS issues or blocking at the edge.";
+
+      let riskSummary;
+      if (
+        data.speedCategory === "Fast" &&
+        data.httpsWorking &&
+        data.usesCloudflare
+      ) {
+        riskSummary =
+          "On the surface your site looks reasonably healthy, but most issues sit below this layer. A full AI SEO Security review is still recommended.";
+      } else if (data.speedCategory === "No response / very slow") {
+        riskSummary =
+          "Your site either did not respond over HTTPS or responded very slowly from this test location. That is a strong signal to address performance and security before traffic grows.";
+      } else {
+        riskSummary =
+          "There are signs your site could be under-performing on speed or relying on minimal edge protection. You are a good candidate for a structured AI SEO Security uplift.";
+      }
+
+      resultEl.innerHTML =
+        "<h3>Surface scan summary for " +
+        data.domain +
+        "</h3>" +
+        "<ul>" +
+        "<li><strong>Speed:</strong> " +
+        data.speedCategory +
+        " <span class='badge " +
+        speedBadgeClass +
+        "'>" +
+        (data.latencyMs != null ? data.latencyMs + " ms" : "") +
+        "</span></li>" +
+        "<li><strong>HTTPS reachability:</strong> " +
+        httpsText +
+        "</li>" +
+        "<li><strong>Edge / Cloudflare signal:</strong> " +
+        cfText +
+        "</li>" +
+        "<li><strong>Overall assessment:</strong> " +
+        riskSummary +
+        "</li>" +
+        "</ul>" +
+        "<p class='note'>This is a lightweight, automated check using public information only. It does not inspect your internal configuration or replace a professional audit.</p>";
+
+      resultEl.style.display = "block";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.style.display = "none";
+      resultEl.style.display = "none";
+
+      const raw = domainInput.value;
+      const domain = normaliseDomain(raw);
+
+      if (!domain) {
+        errorEl.textContent =
+          "Please enter a domain (for example: example.com).";
+        errorEl.style.display = "block";
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = "Scanning…";
+
+      try {
+        const data = await scanDomain(domain);
+        renderResult(data);
+      } catch (err) {
+        console.error(err);
+        errorEl.textContent =
+          "Scan failed. Please try again later or contact Urban Sentinel directly.";
+        errorEl.style.display = "block";
+      } finally {
+        button.disabled = false;
+        button.textContent = "Run surface scan";
+      }
+    });
+  </script>
+</body>
+</html>
