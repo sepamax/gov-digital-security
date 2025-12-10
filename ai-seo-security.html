@@ -40,17 +40,33 @@
       padding: 1.5rem 1.25rem 3rem;
     }
 
-    /* PRINT LOGO (hidden on screen, visible in PDF/print) */
+    /* PRINT HEADER (hidden on screen, visible in PDF/print) */
     #print-logo {
       display: none;
-      text-align: right;
       max-width: 1100px;
       margin: 0 auto;
       padding: 1rem 1.25rem 0;
     }
+
+    #print-logo-inner {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
     #print-logo img {
-      max-width: 170px;
+      max-width: 80px;
       height: auto;
+    }
+
+    #print-logo-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    #print-logo-subtitle {
+      font-size: 0.85rem;
+      color: #6b7280;
     }
 
     /* HERO */
@@ -320,10 +336,18 @@
   </style>
 </head>
 <body>
-  <!-- LOGO FOR PRINTED / PDF REPORTS -->
+  <!-- HEADER SHOWN ONLY IN PRINT / PDF EXPORT -->
   <div id="print-logo">
-    <!-- Update src to the correct path for your logo file -->
-    <img src="urban-sentinel-logo-light.png" alt="Urban Sentinel" />
+    <div id="print-logo-inner">
+      <!-- Make sure this filename matches the logo you upload to GitHub -->
+      <img src="urban-sentinel-logo-light.png" alt="Urban Sentinel logo" />
+      <div>
+        <div id="print-logo-title">AI Security Scan Results</div>
+        <div id="print-logo-subtitle">
+          Prepared by Urban Sentinel Pty Ltd – AI SEO Security &amp; Digital Uplift
+        </div>
+      </div>
+    </div>
   </div>
 
   <header>
@@ -965,7 +989,16 @@
       `;
 
       // Combine
-      html += interpretation + comparisonHTML + riskTagsHTML + googleHTML + impactHTML + priorityHTML + grantHTML + ctaHTML + emailMeHTML;
+      html +=
+        interpretation +
+        comparisonHTML +
+        riskTagsHTML +
+        googleHTML +
+        impactHTML +
+        priorityHTML +
+        grantHTML +
+        ctaHTML +
+        emailMeHTML;
 
       resultEl.innerHTML = html;
       resultEl.style.display = "block";
