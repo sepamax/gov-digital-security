@@ -40,6 +40,19 @@
       padding: 1.5rem 1.25rem 3rem;
     }
 
+    /* PRINT LOGO (hidden on screen, visible in PDF/print) */
+    #print-logo {
+      display: none;
+      text-align: right;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem 0;
+    }
+    #print-logo img {
+      max-width: 170px;
+      height: auto;
+    }
+
     /* HERO */
     .hero {
       background: linear-gradient(135deg, #020617, #0b1220);
@@ -300,10 +313,19 @@
         background: white;
         border: none;
       }
+      #print-logo {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- LOGO FOR PRINTED / PDF REPORTS -->
+  <div id="print-logo">
+    <!-- Update src to the correct path for your logo file -->
+    <img src="urban-sentinel-logo-light.png" alt="Urban Sentinel" />
+  </div>
+
   <header>
     <div class="hero">
       <div class="hero-inner">
@@ -359,7 +381,7 @@
       <p class="note">
         This tool only uses public information accessible from the browser. It cannot see private
         configuration inside your hosting, Cloudflare or other platforms. It’s designed to flag obvious
-        risk and performance issues, not to expose your full setup.
+        risk and performance issues, not to expose your full setup or scrape search engine results.
       </p>
     </section>
 
@@ -801,9 +823,29 @@
       `;
 
       // Risk Indicators
-      let performanceRisk = data.latencyMs > 1500 ? "High" : data.latencyMs > 800 ? "Medium" : "Low";
-      let securityRisk = data.usesCloudflare ? "Medium" : "High";
-      let seoRisk = data.speedCategory === "Slow" ? "High" : data.speedCategory === "Moderate" ? "Medium" : "Low";
+      let performanceRisk;
+      if (data.latencyMs == null) performanceRisk = "Medium";
+      else if (data.latencyMs > 1500) performanceRisk = "High";
+      else if (data.latencyMs > 800) performanceRisk = "Medium";
+      else performanceRisk = "Low";
+
+      let securityRisk;
+      if (data.usesCloudflare === true) {
+        securityRisk = data.score >= 75 ? "Low" : "Medium";
+      } else if (data.usesCloudflare === false) {
+        securityRisk = data.score >= 60 ? "Medium" : "High";
+      } else {
+        securityRisk = "Medium";
+      }
+
+      let seoRisk;
+      if (data.score < 50 || data.speedCategory === "Slow" || data.latencyMs > 1500) {
+        seoRisk = "High";
+      } else if (data.score < 75 || data.speedCategory === "Moderate") {
+        seoRisk = "Medium";
+      } else {
+        seoRisk = "Low";
+      }
 
       const perfClass = performanceRisk === "High" ? "risk-high" : performanceRisk === "Medium" ? "risk-medium" : "risk-low";
       const secClass = securityRisk === "High" ? "risk-high" : securityRisk === "Medium" ? "risk-medium" : "risk-low";
@@ -815,6 +857,42 @@
           <p><strong>Performance Risk:</strong> ${performanceRisk} <span class="risk-chip ${perfClass}">⚡ ${performanceRisk}</span></p>
           <p><strong>Security Risk:</strong> ${securityRisk} <span class="risk-chip ${secClass}">🛡️ ${securityRisk}</span></p>
           <p><strong>SEO Stability Risk:</strong> ${seoRisk} <span class="risk-chip ${seoClass}">📉 ${seoRisk}</span></p>
+        </div>
+      `;
+
+      // What this likely means for Google
+      const googleInsights = [];
+      if (data.latencyMs == null) {
+        googleInsights.push("Google and real users may see inconsistent response times, which can translate into unstable rankings.");
+      } else if (data.latencyMs > 2000) {
+        googleInsights.push("Google will treat this as a slow site, especially on mobile and weaker connections, which can drag down visibility.");
+      } else if (data.latencyMs > 800) {
+        googleInsights.push("Performance is borderline; it may pass basic checks now but is fragile during traffic spikes or busy times of day.");
+      } else {
+        googleInsights.push("Base performance looks fine, but content, links and UX still decide where you rank.");
+      }
+
+      if (data.usesCloudflare === false) {
+        googleInsights.push("No visible edge network means your site relies entirely on origin hosting for speed and resilience, which can hurt Core Web Vitals and crawl consistency.");
+      }
+
+      if (data.httpsWorking === false) {
+        googleInsights.push("Any HTTPS instability is a direct trust and ranking problem for Google and modern browsers.");
+      }
+
+      const brandGuess = data.domain
+        .split(".")[0]
+        .replace(/[-_]/g, " ")
+        .trim();
+
+      googleInsights.push(
+        `If customers search for “${brandGuess}” or common phrases like “your main service + your city” and you don’t appear on the first page or two, it usually means competitors have stronger SEO, content and trust signals on top of these technical issues.`
+      );
+
+      const googleHTML = `
+        <div style="margin-top:1.2rem;">
+          <h3>What This Likely Means for Google</h3>
+          <ul>${googleInsights.map((t) => `<li>${t}</li>`).join("")}</ul>
         </div>
       `;
 
@@ -887,7 +965,7 @@
       `;
 
       // Combine
-      html += interpretation + comparisonHTML + riskTagsHTML + impactHTML + priorityHTML + grantHTML + ctaHTML + emailMeHTML;
+      html += interpretation + comparisonHTML + riskTagsHTML + googleHTML + impactHTML + priorityHTML + grantHTML + ctaHTML + emailMeHTML;
 
       resultEl.innerHTML = html;
       resultEl.style.display = "block";
