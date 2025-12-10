@@ -292,6 +292,68 @@
     .risk-medium { background: rgba(234,179,8,0.16); color: #fbbf24; }
     .risk-high { background: rgba(248,113,113,0.16); color: #f97373; }
 
+    /* GRANT HELPER LAYOUT UNDER RESULTS */
+    .helper-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .helper-col {
+      flex: 1;
+    }
+    .helper-card {
+      background: #020617;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      padding: 1rem;
+    }
+    .helper-title {
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.98rem;
+    }
+    .helper-textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      padding: 0.6rem;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.85rem;
+      resize: vertical;
+    }
+    .helper-btn {
+      margin-top: 0.4rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #1a4c7c;
+      color: #ffffff;
+      font-size: 0.85rem;
+    }
+    .helper-links ul {
+      padding-left: 1.1rem;
+      margin: 0.35rem 0 0;
+      font-size: 0.86rem;
+    }
+    .helper-links p {
+      font-size: 0.88rem;
+    }
+    .helper-links small {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    @media (min-width: 800px) {
+      .helper-grid {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+    }
+
     /* PACKAGES */
     .package-price {
       font-size: 1.1rem;
@@ -721,6 +783,25 @@
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
+    async function copyGrantDescription() {
+      const el = document.getElementById("grantDescription");
+      if (!el) return;
+      const text = el.value;
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          el.select();
+          el.setSelectionRange(0, 99999);
+          document.execCommand("copy");
+        }
+        alert("Grant description copied. Paste it into your application form.");
+      } catch (e) {
+        alert("Could not automatically copy. Please select the text and press Ctrl+C (Cmd+C on Mac).");
+      }
+    }
+
     function renderResult(data) {
       if (!data) {
         resultEl.style.display = "none";
@@ -956,6 +1037,58 @@
         </div>
       `;
 
+      // Helper text for project description
+      const projectDescription = `Project title: AI Security & SEO Uplift for ${data.domain}
+
+Summary:
+This project will deliver an AI-driven security and SEO uplift for ${data.domain}, addressing elevated performance, cyber resilience and digital visibility risks identified in the attached AI Security Scan Results report.
+
+Key activities:
+• Hardening hosting, DNS and web application firewall configuration
+• Improving HTTPS reliability, caching and bot / abuse filtering
+• Optimising performance and Core Web Vitals across key templates
+• Fixing technical SEO issues that affect crawl, indexation and stability
+• Documenting changes for ongoing security, maintenance and review
+
+Expected outcomes:
+• Faster, more stable experience for customers and search engines
+• Stronger protection against common cyber incidents and automated attacks
+• Improved visibility and ranking stability in Google over time
+• A clearer digital-risk baseline for future AI and automation projects.`;
+
+      // Left: advisory / links, Right: grant helper with copy-paste
+      const grantHelperHTML = `
+        <div class="helper-grid">
+          <div class="helper-col helper-card helper-links">
+            <div class="helper-title">Don’t miss this: combine with free advisory support</div>
+            <p>
+              You can combine this report with <strong>free government-funded cyber and digital advisory services</strong>
+              to build a stronger case and plan your uplift:
+            </p>
+            <ul>
+              <li><a href="https://business.gov.au/grants-and-programs" target="_blank" rel="noopener">Australian Government grants &amp; programs finder</a></li>
+              <li><a href="https://business.gov.au/expertise-and-advice/small-business-cyber-resilience-service" target="_blank" rel="noopener">Small Business Cyber Resilience Service – free 1:1 cyber help</a></li>
+              <li><a href="https://www.business.qld.gov.au/running-business/support-services/financial/grants" target="_blank" rel="noopener">Business Queensland – small business grants &amp; schedules</a></li>
+              <li><a href="https://www.grants.services.qld.gov.au/" target="_blank" rel="noopener">Queensland Government Grants Finder</a></li>
+            </ul>
+            <small>
+              These services are independent of Urban Sentinel. We provide the technical uplift and documentation;
+              they help you navigate funding and broader resilience planning.
+            </small>
+          </div>
+          <div class="helper-col helper-card">
+            <div class="helper-title">Grant Application Helper</div>
+            <ol style="font-size:0.86rem; padding-left:1.1rem; margin:0 0 0.5rem;">
+              <li>Download or print this report as a PDF.</li>
+              <li>Attach it to your grant or advisory application.</li>
+              <li>Copy the text below into the “Project summary / Need for funding” box.</li>
+            </ol>
+            <textarea id="grantDescription" class="helper-textarea">${projectDescription}</textarea>
+            <button type="button" class="helper-btn" onclick="copyGrantDescription()">Copy text</button>
+          </div>
+        </div>
+      `;
+
       // CTA Buttons
       const ctaHTML = `
         <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.5rem;">
@@ -997,6 +1130,7 @@
         impactHTML +
         priorityHTML +
         grantHTML +
+        grantHelperHTML +
         ctaHTML +
         emailMeHTML;
 
