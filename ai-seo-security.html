@@ -440,193 +440,310 @@
     does not constitute financial or legal advice.
   </footer>
 
-  <script>
-    const form = document.getElementById("scanForm");
-    const domainInput = document.getElementById("domain");
-    const errorEl = document.getElementById("scanError");
-    const resultEl = document.getElementById("scanResult");
-    const button = document.getElementById("scanButton");
+ <script>
+  const form = document.getElementById("scanForm");
+  const domainInput = document.getElementById("domain");
+  const errorEl = document.getElementById("scanError");
+  const resultEl = document.getElementById("scanResult");
+  const button = document.getElementById("scanButton");
 
-    function normaliseDomain(value) {
-      if (!value) return "";
-      return value
-        .trim()
-        .replace(/^https?:\/\//i, "")
-        .replace(/\/.*$/, "");
+  function normaliseDomain(value) {
+    if (!value) return "";
+    return value
+      .trim()
+      .toLowerCase()
+      .replace(/^https?:\/\//i, "")
+      .replace(/\/.*$/, "");
+  }
+
+  async function lookupDns(domain) {
+    const out = {
+      nsNames: [],
+      ip: null,
+      usesCloudflare: null,
+    };
+
+    try {
+      // Name servers (for Cloudflare detection)
+      const nsRes = await fetch(
+        "https://dns.google/resolve?name=" +
+          encodeURIComponent(domain) +
+          "&type=NS"
+      );
+      if (nsRes.ok) {
+        const nsData = await nsRes.json();
+        const answers = nsData.Answer || [];
+        out.nsNames = answers.map((a) => String(a.data || "").toLowerCase());
+        out.usesCloudflare = out.nsNames.some((n) =>
+          n.includes("cloudflare")
+        );
+      }
+    } catch (e) {
+      out.usesCloudflare = null;
     }
 
-    async function scanDomain(domain) {
-      const result = {
-        domain,
-        latencyMs: null,
-        speedCategory: "Unknown",
-        httpsWorking: null,
-        usesCloudflare: null
+    try {
+      // A record (for IP + hosting lookup)
+      const aRes = await fetch(
+        "https://dns.google/resolve?name=" +
+          encodeURIComponent(domain) +
+          "&type=A"
+      );
+      if (aRes.ok) {
+        const aData = await aRes.json();
+        const answers = aData.Answer || [];
+        const first = answers.find((a) => a.data);
+        if (first) out.ip = first.data;
+      }
+    } catch (e) {
+      out.ip = null;
+    }
+
+    return out;
+  }
+
+  async function lookupHosting(ip) {
+    if (!ip) return null;
+    try {
+      const res = await fetch("https://ipwho.is/" + encodeURIComponent(ip));
+      if (!res.ok) return null;
+      const data = await res.json();
+      if (!data.success) return null;
+      return {
+        continent: data.continent || null,
+        country: data.country || null,
+        org: data.connection && data.connection.org ? data.connection.org : null,
+        isp: data.connection && data.connection.isp ? data.connection.isp : null,
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async function measureLatency(domain) {
+    const result = {
+      latencyMs: null,
+      httpsWorking: null,
+    };
+
+    return new Promise((resolve) => {
+      const img = new Image();
+      const start = performance.now();
+      let done = false;
+
+      const finish = (status) => {
+        if (done) return;
+        done = true;
+        const duration = performance.now() - start;
+        result.latencyMs = Math.round(duration);
+        result.httpsWorking = status === "ok";
+        resolve(result);
       };
 
-      // DNS / Cloudflare check via Google DNS
-      try {
-        const res = await fetch(
-          "https://dns.google/resolve?name=" +
-            encodeURIComponent(domain) +
-            "&type=NS"
-        );
-        if (res.ok) {
-          const data = await res.json();
-          const answers = data.Answer || [];
-          const nsNames = answers.map((a) => String(a.data || "").toLowerCase());
-          const usesCf = nsNames.some((n) => n.includes("cloudflare"));
-          result.usesCloudflare = usesCf;
-        }
-      } catch (e) {
-        result.usesCloudflare = null;
-      }
+      const timer = setTimeout(() => finish("timeout"), 6000);
 
-      // Simple speed / HTTPS reachability check using favicon
-      result.speedCategory = "Unknown";
-      return new Promise((resolve) => {
-        const img = new Image();
-        const start = performance.now();
-        let done = false;
+      img.onload = () => {
+        clearTimeout(timer);
+        finish("ok");
+      };
+      img.onerror = () => {
+        clearTimeout(timer);
+        finish("error");
+      };
 
-        const finish = (status) => {
-          if (done) return;
-          done = true;
-          const duration = performance.now() - start;
-          result.latencyMs = Math.round(duration);
-
-          if (status === "timeout") {
-            result.speedCategory = "No response / very slow";
-          } else if (duration < 800) {
-            result.speedCategory = "Fast";
-          } else if (duration < 2000) {
-            result.speedCategory = "Moderate";
-          } else {
-            result.speedCategory = "Slow";
-          }
-
-          result.httpsWorking = status === "ok";
-          resolve(result);
-        };
-
-        const timer = setTimeout(() => finish("timeout"), 5000);
-
-        img.onload = () => {
-          clearTimeout(timer);
-          finish("ok");
-        };
-        img.onerror = () => {
-          clearTimeout(timer);
-          finish("error");
-        };
-
-        img.src =
-          "https://" + domain + "/favicon.ico?cacheBust=" + Date.now();
-      });
-    }
-
-    function renderResult(data) {
-      if (!data) {
-        resultEl.style.display = "none";
-        return;
-      }
-
-      const speedBadgeClass =
-        data.speedCategory === "Fast"
-          ? "badge-fast"
-          : data.speedCategory === "Moderate"
-          ? "badge-moderate"
-          : data.speedCategory === "Slow" ||
-            data.speedCategory === "No response / very slow"
-          ? "badge-slow"
-          : "badge-unknown";
-
-      const cfText =
-        data.usesCloudflare === true
-          ? "DNS suggests your domain is using Cloudflare name servers. That usually means some level of edge protection, but configuration quality still matters."
-          : data.usesCloudflare === false
-          ? "We did not detect Cloudflare name servers. Your edge protection may rely on your hosting provider or another service."
-          : "We could not reliably read DNS information for edge protection.";
-
-      const httpsText =
-        data.httpsWorking === true
-          ? "We could reach your site over HTTPS during this simple check."
-          : "We could not confidently reach your site over HTTPS using this method. That can indicate SSL/TLS issues or blocking at the edge.";
-
-      let riskSummary;
-      if (
-        data.speedCategory === "Fast" &&
-        data.httpsWorking &&
-        data.usesCloudflare
-      ) {
-        riskSummary =
-          "On the surface your site looks reasonably healthy, but most issues sit below this layer. A full AI SEO Security review is still recommended.";
-      } else if (data.speedCategory === "No response / very slow") {
-        riskSummary =
-          "Your site either did not respond over HTTPS or responded very slowly from this test location. That is a strong signal to address performance and security before traffic grows.";
-      } else {
-        riskSummary =
-          "There are signs your site could be under-performing on speed or relying on minimal edge protection. You are a good candidate for a structured AI SEO Security uplift.";
-      }
-
-      resultEl.innerHTML =
-        "<h3>Surface scan summary for " +
-        data.domain +
-        "</h3>" +
-        "<ul>" +
-        "<li><strong>Speed:</strong> " +
-        data.speedCategory +
-        " <span class='badge " +
-        speedBadgeClass +
-        "'>" +
-        (data.latencyMs != null ? data.latencyMs + " ms" : "") +
-        "</span></li>" +
-        "<li><strong>HTTPS reachability:</strong> " +
-        httpsText +
-        "</li>" +
-        "<li><strong>Edge / Cloudflare signal:</strong> " +
-        cfText +
-        "</li>" +
-        "<li><strong>Overall assessment:</strong> " +
-        riskSummary +
-        "</li>" +
-        "</ul>" +
-        "<p class='note'>This is a lightweight, automated check using public information only. It does not inspect your internal configuration or replace a professional audit.</p>";
-
-      resultEl.style.display = "block";
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      errorEl.style.display = "none";
-      resultEl.style.display = "none";
-
-      const raw = domainInput.value;
-      const domain = normaliseDomain(raw);
-
-      if (!domain) {
-        errorEl.textContent =
-          "Please enter a domain (for example: example.com).";
-        errorEl.style.display = "block";
-        return;
-      }
-
-      button.disabled = true;
-      button.textContent = "Scanning…";
-
-      try {
-        const data = await scanDomain(domain);
-        renderResult(data);
-      } catch (err) {
-        console.error(err);
-        errorEl.textContent =
-          "Scan failed. Please try again later or contact Urban Sentinel directly.";
-        errorEl.style.display = "block";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Run surface scan";
-      }
+      img.src =
+        "https://" + domain + "/favicon.ico?cacheBust=" + Date.now();
     });
-  </script>
+  }
+
+  function classifySpeed(latencyMs) {
+    if (latencyMs == null) return "Unknown";
+    if (latencyMs < 500) return "Fast";
+    if (latencyMs < 1500) return "Moderate";
+    if (latencyMs < 4000) return "Slow";
+    return "No response / very slow";
+  }
+
+  function buildScore(latencyMs, usesCloudflare, hostingInfo) {
+    let score = 50;
+
+    if (latencyMs != null) {
+      if (latencyMs < 500) score += 20;
+      else if (latencyMs < 1500) score += 10;
+      else if (latencyMs < 4000) score -= 10;
+      else score -= 20;
+    } else {
+      score -= 5;
+    }
+
+    if (usesCloudflare === true) score += 10;
+    else if (usesCloudflare === false) score -= 5;
+
+    if (hostingInfo && hostingInfo.country) {
+      if (hostingInfo.country === "Australia") score += 5;
+    }
+
+    if (score < 0) score = 0;
+    if (score > 100) score = 100;
+    return score;
+  }
+
+  function classifyRisk(score) {
+    if (score >= 75) return "Lower (but not zero)";
+    if (score >= 50) return "Moderate";
+    return "Elevated";
+  }
+
+  function upliftText(score) {
+    if (score >= 75) {
+      return "Your site appears reasonably healthy at a surface level, but most issues sit deeper. A structured AI SEO Security uplift would focus on tightening configuration, modernising security headers and squeezing extra performance – more about resilience than rescue.";
+    }
+    if (score >= 50) {
+      return "Your site shows average performance and risk signals. An AI SEO Security uplift is likely to deliver meaningful improvements in both resilience and speed, especially under real-world traffic and attack conditions.";
+    }
+    return "Your current posture looks fragile from the outside. An AI SEO Security uplift is likely to produce a significant jump in safety, stability and performance, and should be treated as a priority rather than a cosmetic upgrade.";
+  }
+
+  function renderResult(data) {
+    if (!data) {
+      resultEl.style.display = "none";
+      return;
+    }
+
+    const speedBadgeClass =
+      data.speedCategory === "Fast"
+        ? "badge-fast"
+        : data.speedCategory === "Moderate"
+        ? "badge-moderate"
+        : data.speedCategory === "Slow" ||
+          data.speedCategory === "No response / very slow"
+        ? "badge-slow"
+        : "badge-unknown";
+
+    const cfText =
+      data.usesCloudflare === true
+        ? "Your DNS suggests you are using Cloudflare name servers. That usually means some level of edge protection and caching, though configuration quality still matters."
+        : data.usesCloudflare === false
+        ? "We did not detect Cloudflare name servers. Your edge protection is likely handled directly by your hosting provider or another service."
+        : "We could not reliably read DNS information for your edge layer.";
+
+    const httpsText =
+      data.httpsWorking === true
+        ? "We could reach your site over HTTPS during this simple test."
+        : data.httpsWorking === false
+        ? "We could not confidently reach your site over HTTPS from this test. That may indicate SSL/TLS issues or blocking at the edge."
+        : "HTTPS reachability was inconclusive from this location.";
+
+    let hostingText = "We could not confidently identify your hosting environment from public data.";
+    if (data.hostingInfo) {
+      const parts = [];
+      if (data.hostingInfo.org) parts.push(data.hostingInfo.org);
+      else if (data.hostingInfo.isp) parts.push(data.hostingInfo.isp);
+      if (data.hostingInfo.country) parts.push(data.hostingInfo.country);
+      if (parts.length) {
+        hostingText =
+          "Public signals suggest your site is hosted with " +
+          parts.join(", ") +
+          ". This does not say anything about the quality of your configuration, only the underlying provider.";
+      }
+    }
+
+    const riskLevel = classifyRisk(data.score);
+    const upliftSummary = upliftText(data.score);
+
+    resultEl.innerHTML =
+      "<h3>Surface scan summary for " +
+      data.domain +
+      "</h3>" +
+      "<ul>" +
+      "<li><strong>Composite surface score:</strong> " +
+      data.score +
+      "/100 (risk level: " +
+      riskLevel +
+      ")</li>" +
+      "<li><strong>Speed:</strong> " +
+      data.speedCategory +
+      " <span class='badge " +
+      speedBadgeClass +
+      "'>" +
+      (data.latencyMs != null ? data.latencyMs + " ms round trip" : "") +
+      "</span></li>" +
+      "<li><strong>HTTPS reachability:</strong> " +
+      httpsText +
+      "</li>" +
+      "<li><strong>Edge / Cloudflare signal:</strong> " +
+      cfText +
+      "</li>" +
+      "<li><strong>Hosting signal:</strong> " +
+      hostingText +
+      "</li>" +
+      "<li><strong>Overall assessment:</strong> " +
+      upliftSummary +
+      "</li>" +
+      "</ul>" +
+      "<p class='note'>This is a high-level automated scan using public information only. It does not inspect your internal configuration, does not replace a professional audit, and does not provide step-by-step fix instructions.</p>";
+
+    resultEl.style.display = "block";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    errorEl.style.display = "none";
+    resultEl.style.display = "none";
+
+    const raw = domainInput.value;
+    const domain = normaliseDomain(raw);
+
+    if (!domain) {
+      errorEl.textContent =
+        "Please enter a domain (for example: example.com).";
+      errorEl.style.display = "block";
+      return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Scanning…";
+
+    try {
+      const [dnsInfo, latencyInfo] = await Promise.all([
+        lookupDns(domain),
+        measureLatency(domain),
+      ]);
+
+      let hostingInfo = null;
+      if (dnsInfo.ip) {
+        hostingInfo = await lookupHosting(dnsInfo.ip);
+      }
+
+      const speedCategory = classifySpeed(latencyInfo.latencyMs);
+      const score = buildScore(
+        latencyInfo.latencyMs,
+        dnsInfo.usesCloudflare,
+        hostingInfo
+      );
+
+      const data = {
+        domain,
+        latencyMs: latencyInfo.latencyMs,
+        httpsWorking: latencyInfo.httpsWorking,
+        usesCloudflare: dnsInfo.usesCloudflare,
+        hostingInfo,
+        speedCategory,
+        score,
+      };
+
+      renderResult(data);
+    } catch (err) {
+      console.error(err);
+      errorEl.textContent =
+        "Scan failed. Please try again later or contact Urban Sentinel directly.";
+      errorEl.style.display = "block";
+    } finally {
+      button.disabled = false;
+      button.textContent = "Run surface scan";
+    }
+  });
+</script>
+
 </body>
 </html>
