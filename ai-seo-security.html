@@ -13,8 +13,8 @@
       --bg: #f5f7fb;
       --bg-alt: #ffffff;
       --card: #ffffff;
-      --accent: #2f7ff7;       /* primary blue */
-      --accent-soft: #e4f1ff;  /* light blue background */
+      --accent: #2f7ff7;
+      --accent-soft: #e4f1ff;
       --text-main: #1f2933;
       --text-soft: #4b586c;
       --muted: #7b8ba6;
@@ -52,29 +52,25 @@
       margin: 0 auto;
       padding: 1rem 1.5rem 0;
     }
-
     #print-logo-inner {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
-
     #print-logo img {
       max-width: 80px;
       height: auto;
     }
-
     #print-logo-title {
       font-weight: 700;
       font-size: 1.1rem;
     }
-
     #print-logo-subtitle {
       font-size: 0.85rem;
       color: #6b7280;
     }
 
-    /* NAVIGATION – light Urban Sentinel flavour */
+    /* NAVIGATION */
     #main-nav {
       position: sticky;
       top: 0;
@@ -83,7 +79,6 @@
       border-bottom: 1px solid #e4e8f0;
       box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
     }
-
     .nav-shell {
       max-width: 1200px;
       margin: 0 auto;
@@ -93,19 +88,16 @@
       justify-content: space-between;
       gap: 0.75rem;
     }
-
     .nav-brand {
       display: inline-flex;
       align-items: center;
       gap: 0.55rem;
     }
-
     .nav-brand img {
       height: 36px;
       width: auto;
       display: block;
     }
-
     .nav-brand span {
       font-size: 0.95rem;
       font-weight: 700;
@@ -113,14 +105,12 @@
       text-transform: uppercase;
       color: #1e3a8a;
     }
-
     .nav-links {
       display: flex;
       align-items: center;
       gap: 1.7rem;
       font-size: 0.85rem;
     }
-
     .nav-links a {
       color: #4b586c;
       text-decoration: none;
@@ -129,11 +119,9 @@
       font-weight: 500;
       font-size: 0.78rem;
     }
-
     .nav-links a:hover {
       color: var(--accent);
     }
-
     #navToggle {
       display: none;
       border-radius: 999px;
@@ -144,12 +132,10 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
-
     #navToggle span {
       display: inline-block;
       transform: translateY(-1px);
     }
-
     @media (max-width: 768px) {
       .nav-links {
         position: absolute;
@@ -166,9 +152,7 @@
         display: none;
         box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
       }
-      .nav-links.nav-links-open {
-        display: flex;
-      }
+      .nav-links.nav-links-open { display: flex; }
       #navToggle {
         display: inline-flex;
         align-items: center;
@@ -176,7 +160,7 @@
       }
     }
 
-    /* HERO – light, lots of white space */
+    /* HERO */
     .hero {
       background: #ffffff;
       border-radius: 24px;
@@ -185,22 +169,18 @@
       box-shadow: var(--shadow-soft);
       margin-top: 2rem;
     }
-
     .hero-inner {
       position: relative;
     }
-
     .hero-layout {
       display: flex;
       flex-direction: column;
       gap: 2rem;
     }
-
     .hero-copy {
       flex: 3;
       min-width: 0;
     }
-
     .hero-visual {
       flex: 2;
       min-width: 0;
@@ -208,7 +188,6 @@
       align-items: stretch;
       justify-content: flex-end;
     }
-
     .hero-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.16em;
@@ -216,28 +195,24 @@
       color: var(--muted);
       margin-bottom: 0.5rem;
     }
-
     h1 {
       font-size: 2.4rem;
       margin: 0 0 0.9rem;
       color: #1b4fff;
       line-height: 1.1;
     }
-
     .lead {
       font-size: 1rem;
       color: var(--text-soft);
       max-width: 640px;
       margin-bottom: 1.4rem;
     }
-
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 0.85rem;
       margin-bottom: 1rem;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
@@ -252,94 +227,40 @@
       transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s;
       white-space: nowrap;
     }
-
     .btn-primary {
       background: var(--accent);
       border-color: #1d4ed8;
       color: #ffffff;
       box-shadow: 0 10px 28px rgba(37, 99, 235, 0.35);
     }
-
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45);
     }
-
     .btn-outline {
       background: #ffffff;
       border-color: #cbd5e1;
       color: #1f2933;
     }
-
     .hero-meta {
       font-size: 0.82rem;
       color: var(--muted);
       max-width: 520px;
     }
 
-    /* HERO VISUAL placeholder – “panel” style like site imagery */
-    .hero-visual-card {
+    /* HERO IMAGE HOLDER */
+    .hero-image-wrapper {
       width: 100%;
       border-radius: 24px;
-      padding: 1.4rem 1.3rem 1.6rem;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      color: #e5f0ff;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: #020617;
     }
-
-    .hero-visual-tag {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: #c7d2fe;
-    }
-
-    .hero-visual-main {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.75rem;
-    }
-
-    .hero-visual-score {
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .hero-visual-caption {
-      font-size: 0.85rem;
-      color: #e5ecff;
-      max-width: 190px;
-    }
-
-    .hero-visual-bars {
-      display: flex;
-      gap: 4px;
-      margin-top: 0.4rem;
-    }
-
-    .hero-visual-bars span {
-      flex: 1;
-      height: 9px;
-      border-radius: 999px;
-      background: rgba(30, 64, 175, 0.7);
-    }
-
-    .hero-visual-bars span:nth-child(3),
-    .hero-visual-bars span:nth-child(4),
-    .hero-visual-bars span:nth-child(5) {
-      background: #38bdf8;
-    }
-
-    .hero-visual-note {
-      font-size: 0.78rem;
-      color: #c7d2fe;
-      margin-top: 0.4rem;
+    .hero-image-wrapper img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     @media (min-width: 900px) {
@@ -349,7 +270,7 @@
       }
     }
 
-    /* SECTIONS – white cards on light background */
+    /* SECTIONS */
     section {
       margin-top: 2.5rem;
       background: #ffffff;
@@ -358,11 +279,9 @@
       border: 1px solid #e4e8f0;
       box-shadow: var(--shadow-soft);
     }
-
     section.alt {
       background: #ffffff;
     }
-
     h2 {
       font-size: 1.8rem;
       margin-top: 0;
@@ -370,29 +289,24 @@
       color: #1b4fff;
       text-align: left;
     }
-
     h3 {
       margin-top: 0.5rem;
       margin-bottom: 0.4rem;
       font-size: 1.05rem;
       color: var(--text-main);
     }
-
     p {
       font-size: 0.96rem;
       color: var(--text-soft);
     }
-
     .grid {
       display: grid;
       gap: 1.2rem;
     }
-
     @media (min-width: 800px) {
       .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
-
     .card {
       background: #f9fbff;
       border-radius: 18px;
@@ -400,21 +314,17 @@
       padding: 1.2rem 1.2rem 1.3rem;
       font-size: 0.92rem;
     }
-
     .card.danger {
       border-color: #fbb6b6;
       background: #fff5f5;
     }
-
     ul {
       padding-left: 1.1rem;
       margin: 0.4rem 0 0;
       font-size: 0.9rem;
       color: var(--text-soft);
     }
-
     li { margin-bottom: 0.25rem; }
-
     .note {
       font-size: 0.82rem;
       color: var(--muted);
@@ -429,26 +339,22 @@
       border: 1px solid #d4e2ff;
       padding: 1.1rem 1.1rem 1.3rem;
     }
-
     .scan-widget label {
       font-size: 0.86rem;
       color: var(--muted);
       display: block;
       margin-bottom: 0.4rem;
     }
-
     .scan-input-row {
       display: flex;
       gap: 0.45rem;
       align-items: center;
       margin-bottom: 0.5rem;
     }
-
     .scan-input-row span {
       font-size: 0.92rem;
       color: var(--muted);
     }
-
     .scan-input-row input {
       flex: 1;
       padding: 0.6rem 0.8rem;
@@ -459,7 +365,6 @@
       font-size: 0.9rem;
       outline: none;
     }
-
     .scan-input-row button {
       padding: 0.6rem 1.1rem;
       border-radius: 999px;
@@ -471,12 +376,10 @@
       white-space: nowrap;
       font-weight: 600;
     }
-
     .scan-input-row button:disabled {
       opacity: 0.6;
       cursor: default;
     }
-
     .scan-error {
       color: var(--danger);
       font-size: 0.85rem;
@@ -491,7 +394,6 @@
       transform: translateY(8px);
       transition: opacity 0.25s ease-out, transform 0.25s ease-out;
     }
-
     .scan-result.visible {
       opacity: 1;
       transform: translateY(0);
@@ -504,7 +406,6 @@
       font-size: 0.75rem;
       margin-left: 0.3rem;
     }
-
     .badge-fast { background: rgba(34, 197, 94, 0.12); color: var(--success); }
     .badge-moderate { background: rgba(248, 180, 0, 0.12); color: var(--warning); }
     .badge-slow { background: rgba(232, 92, 92, 0.13); color: var(--danger); }
@@ -517,133 +418,11 @@
       font-size: 0.75rem;
       margin-top: 0.2rem;
     }
-
     .risk-low { background: rgba(34,197,94,0.12); color: #16a34a; }
     .risk-medium { background: rgba(248,180,0,0.14); color: #d97706; }
     .risk-high { background: rgba(232,92,92,0.14); color: #b91c1c; }
 
-    /* GRANT HELPER */
-    .helper-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .helper-col {
-      flex: 1;
-    }
-
-    .helper-card {
-      background: #f9fbff;
-      border-radius: 18px;
-      border: 1px solid #dde5f2;
-      padding: 1rem 1.1rem;
-    }
-
-    .helper-title {
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 1rem;
-      color: var(--text-main);
-    }
-
-    .helper-textarea {
-      width: 100%;
-      min-height: 150px;
-      border-radius: 10px;
-      border: 1px solid #cbd5e1;
-      padding: 0.7rem;
-      background: #ffffff;
-      color: var(--text-main);
-      font-size: 0.86rem;
-      resize: vertical;
-    }
-
-    .helper-btn {
-      margin-top: 0.5rem;
-      padding: 0.55rem 0.95rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-      background: var(--accent);
-      color: #ffffff;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-
-    .helper-links ul {
-      padding-left: 1.1rem;
-      margin: 0.35rem 0 0;
-      font-size: 0.86rem;
-    }
-
-    .helper-links p {
-      font-size: 0.9rem;
-    }
-
-    .helper-links small {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    @media (min-width: 800px) {
-      .helper-grid {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-    }
-
-    /* PACKAGES */
-    .package-price {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      color: #1f2933;
-    }
-
-    .package-tag {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-    }
-
-    /* FOOTER – match site dark bar */
-    footer {
-      margin-top: 2.5rem;
-      background: #1f3555;
-      color: #e5ecff;
-      padding: 2rem 1.5rem 2.3rem;
-    }
-
-    footer-inner {
-      display: block;
-    }
-
-    footer p {
-      margin: 0.35rem 0;
-      color: #c7d2fe;
-      font-size: 0.85rem;
-    }
-
-    footer small {
-      display: block;
-      margin-top: 1rem;
-      font-size: 0.8rem;
-      color: #9fb3ff;
-    }
-
-    footer a {
-      color: #bfe2ff;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* New result layout */
+    /* SUMMARY HEADER */
     .scan-summary-header {
       border-radius: 18px;
       padding: 1.2rem 1.2rem 1.4rem;
@@ -651,14 +430,12 @@
       background: #f3f7ff;
       border: 1px solid #d4e2ff;
     }
-
     .scan-summary-title {
       margin: 0 0 0.3rem;
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-main);
     }
-
     .scan-summary-score {
       display: flex;
       flex-wrap: wrap;
@@ -666,26 +443,22 @@
       gap: 0.45rem;
       margin: 0.15rem 0 0.4rem;
     }
-
     .scan-summary-score-label {
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.09em;
       color: var(--muted);
     }
-
     .scan-summary-score-value {
       font-size: 1.3rem;
       font-weight: 700;
       color: #1b4fff;
     }
-
     .scan-summary-risk {
       font-size: 0.88rem;
       margin: 0.1rem 0 0.55rem;
       color: var(--text-soft);
     }
-
     .scan-summary-risk-badge {
       display: inline-block;
       margin-left: 0.4rem;
@@ -695,30 +468,26 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
     }
-
     .scan-summary-risk-low {
       background: rgba(34,197,94,0.12);
       color: #16a34a;
     }
-
     .scan-summary-risk-moderate {
       background: rgba(248,180,0,0.14);
       color: #d97706;
     }
-
     .scan-summary-risk-elevated {
       background: rgba(232,92,92,0.14);
       color: #b91c1c;
     }
-
     .scan-summary-meter {
       display: inline-flex;
       border-radius: 999px;
       overflow: hidden;
       border: 1px solid rgba(148,163,184,0.6);
       margin-bottom: 0.5rem;
+      animation: meterPulse 2s ease-in-out infinite alternate;
     }
-
     .scan-summary-meter span {
       padding: 0.25rem 0.75rem;
       font-size: 0.75rem;
@@ -727,25 +496,28 @@
       color: #9ca3af;
       background: #e5ecff;
     }
-
     .scan-summary-meter span.active {
       background: #1b4fff;
       color: #ffffff;
     }
-
     .scan-summary-note {
       font-size: 0.86rem;
       max-width: 40rem;
       color: var(--text-soft);
     }
 
+    @keyframes meterPulse {
+      0% { box-shadow: 0 0 0 rgba(59,130,246,0.0); }
+      100% { box-shadow: 0 0 0 6px rgba(59,130,246,0.20); }
+    }
+
+    /* MATRIX + ANIMATED STRIPS */
     .scan-matrix {
       border-radius: 18px;
       border: 1px solid #dde5f2;
       background: #f9fbff;
       padding: 0.75rem 1.1rem 1.1rem;
     }
-
     .scan-row {
       display: grid;
       grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
@@ -753,31 +525,24 @@
       padding: 0.9rem 0;
       border-bottom: 1px solid #e0e7f5;
     }
-
-    .scan-row:last-child {
-      border-bottom: none;
-    }
-
+    .scan-row:last-child { border-bottom: none; }
     .scan-row-left h4 {
       margin: 0 0 0.25rem;
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-main);
     }
-
     .scan-row-left p {
       margin: 0;
       font-size: 0.9rem;
       color: var(--text-soft);
     }
-
     .scan-row-right {
       border-radius: 14px;
       padding: 0.7rem 0.9rem;
       background: #ffffff;
       border: 1px solid #d4e2ff;
     }
-
     .scan-status-pill {
       display: inline-block;
       padding: 0.16rem 0.7rem;
@@ -786,69 +551,59 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
     }
-
-    .scan-status-ok {
-      background: rgba(34,197,94,0.12);
-      color: #16a34a;
-    }
-
-    .scan-status-issue {
-      background: rgba(232,92,92,0.14);
-      color: #b91c1c;
-    }
-
-    .scan-status-warning {
-      background: rgba(248,180,0,0.16);
-      color: #b45309;
-    }
-
-    .scan-status-neutral {
-      background: rgba(148,163,184,0.15);
-      color: #4b5563;
-    }
-
+    .scan-status-ok { background: rgba(34,197,94,0.12); color: #16a34a; }
+    .scan-status-issue { background: rgba(232,92,92,0.14); color: #b91c1c; }
+    .scan-status-warning { background: rgba(248,180,0,0.16); color: #b45309; }
+    .scan-status-neutral { background: rgba(148,163,184,0.15); color: #4b5563; }
     .scan-row-visual-text {
       margin: 0.4rem 0 0;
       font-size: 0.88rem;
       color: var(--text-soft);
     }
-
     .scan-status-strip {
       display: flex;
       gap: 4px;
       margin-top: 0.45rem;
     }
-
     .scan-status-seg {
       flex: 1;
       height: 6px;
       border-radius: 999px;
       background: #e5ecff;
+      transform-origin: left center;
+      transform: scaleX(1);
+      opacity: 0.8;
     }
-
     .scan-status-seg.on {
       background: #1b4fff;
+      transform: scaleX(0);
+      opacity: 0;
+      animation: segFill 0.5s ease-out forwards;
+      animation-delay: var(--seg-delay, 0s);
+    }
+    @keyframes segFill {
+      to {
+        transform: scaleX(1);
+        opacity: 1;
+      }
     }
 
-    /* CTA grid */
+    /* CTA GRID */
     .scan-actions-grid {
       margin-top: 1.4rem;
       display: grid;
       gap: 0.75rem;
     }
-
     @media (min-width: 720px) {
       .scan-actions-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-
     .scan-actions-col {
       display: flex;
       flex-direction: column;
       gap: 0.55rem;
     }
-
     .scan-actions-button {
       padding: 0.7rem 1rem;
       border-radius: 999px;
@@ -861,14 +616,12 @@
       text-decoration: none;
       font-weight: 500;
     }
-
     .scan-actions-button.primary {
       background: var(--accent);
       border-color: #1d4ed8;
       color: #ffffff;
       font-weight: 600;
     }
-
     .scan-actions-button:hover {
       filter: brightness(1.03);
     }
@@ -881,13 +634,11 @@
       border: 1px solid #dde5f2;
       background: #f9fbff;
     }
-
     .request-form h3 {
       margin-top: 0;
       margin-bottom: 0.4rem;
       font-size: 1.05rem;
     }
-
     .request-summary {
       display: flex;
       flex-wrap: wrap;
@@ -895,7 +646,6 @@
       font-size: 0.84rem;
       margin-bottom: 0.9rem;
     }
-
     .request-summary div span {
       display: block;
       text-transform: uppercase;
@@ -903,31 +653,26 @@
       font-size: 0.72rem;
       color: var(--muted);
     }
-
     .request-summary div strong {
       font-size: 0.9rem;
       color: var(--text-main);
     }
-
     .request-grid {
       display: grid;
       gap: 0.75rem;
       margin-bottom: 0.75rem;
     }
-
     @media (min-width: 720px) {
       .request-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-
     .request-field label {
       display: block;
       font-size: 0.8rem;
       margin-bottom: 0.25rem;
       color: var(--text-main);
     }
-
     .request-field input,
     .request-field textarea {
       width: 100%;
@@ -938,19 +683,16 @@
       color: var(--text-main);
       font-size: 0.9rem;
     }
-
     .request-field textarea {
       min-height: 90px;
       resize: vertical;
     }
-
     .request-field small {
       display: block;
       font-size: 0.75rem;
       color: #9ca3af;
       margin-top: 0.25rem;
     }
-
     .request-checkbox {
       display: flex;
       align-items: flex-start;
@@ -959,11 +701,9 @@
       color: var(--text-soft);
       margin-bottom: 0.4rem;
     }
-
     .request-checkbox input {
       margin-top: 0.15rem;
     }
-
     .request-submit {
       margin-top: 0.6rem;
       padding: 0.7rem 1.1rem;
@@ -975,9 +715,71 @@
       font-weight: 600;
       cursor: pointer;
     }
-
     .request-submit:hover {
       filter: brightness(1.04);
+    }
+
+    /* GRANT HELPER */
+    .helper-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .helper-col {
+      flex: 1;
+    }
+    .helper-card {
+      background: #f9fbff;
+      border-radius: 18px;
+      border: 1px solid #dde5f2;
+      padding: 1rem 1.1rem;
+    }
+    .helper-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .helper-textarea {
+      width: 100%;
+      min-height: 150px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      padding: 0.7rem;
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 0.86rem;
+      resize: vertical;
+    }
+    .helper-btn {
+      margin-top: 0.5rem;
+      padding: 0.55rem 0.95rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .helper-links ul {
+      padding-left: 1.1rem;
+      margin: 0.35rem 0 0;
+      font-size: 0.86rem;
+    }
+    .helper-links p {
+      font-size: 0.9rem;
+    }
+    .helper-links small {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+    @media (min-width: 800px) {
+      .helper-grid {
+        flex-direction: row;
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 700px) {
@@ -986,11 +788,129 @@
       }
     }
 
+    /* COMMITMENT STRIP (like main site) */
+    .commitment {
+      background: #f5f7fb;
+      border-top: 1px solid #e4e8f0;
+      border-bottom: 1px solid #e4e8f0;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .commitment-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .commitment h3 {
+      margin: 0 0 0.8rem;
+      font-size: 1.1rem;
+      color: #1b4fff;
+    }
+    .commitment p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    /* FOOTER – Urban Sentinel style */
+    footer {
+      background: #1f3555;
+      color: #e5ecff;
+      padding: 2.4rem 1.5rem 2.2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      gap: 1.8rem;
+      margin-bottom: 1.8rem;
+    }
+    @media (min-width: 900px) {
+      .footer-top {
+        grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr) minmax(0, 1.5fr);
+      }
+    }
+    .footer-logo-block img {
+      height: 32px;
+      width: auto;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+    .footer-logo-block p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+      color: #c7d2fe;
+      max-width: 20rem;
+    }
+    .footer-heading {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #bfdbfe;
+    }
+    .footer-links,
+    .footer-links li {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li a {
+      font-size: 0.88rem;
+      color: #e5ecff;
+      text-decoration: none;
+    }
+    .footer-links li + li {
+      margin-top: 0.35rem;
+    }
+    .footer-links li a:hover {
+      text-decoration: underline;
+    }
+    .footer-contact p {
+      margin: 0.25rem 0;
+      font-size: 0.88rem;
+      color: #c7d2fe;
+    }
+    .footer-contact a {
+      color: #bfe2ff;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      padding-top: 0.9rem;
+      font-size: 0.78rem;
+      color: #9fb3ff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Reduced motion respect */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+      .scan-status-seg.on {
+        transform: scaleX(1) !important;
+        opacity: 1 !important;
+      }
+      .scan-summary-meter {
+        box-shadow: none !important;
+      }
+    }
+
     @media print {
       #main-nav,
       header,
       #packages,
       #grants,
+      .commitment,
       footer,
       .helper-grid,
       .request-form {
@@ -1070,23 +990,8 @@
           </p>
         </div>
         <div class="hero-visual">
-          <div class="hero-visual-card">
-            <div class="hero-visual-tag">AI surface scan visual</div>
-            <div class="hero-visual-main">
-              <div>
-                <div class="hero-visual-score">75–100</div>
-                <div class="hero-visual-caption">
-                  Target band for resilient commercial sites after a full uplift.
-                </div>
-              </div>
-            </div>
-            <div class="hero-visual-bars">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <p class="hero-visual-note">
-              When this page lives directly under urbansentinel.com.au, this block can hold a live image
-              or dynamic risk visual. For now it keeps layout and style consistent with the main site.
-            </p>
+          <div class="hero-image-wrapper">
+            <img src="urban-scan-hero-1600x900.webp" alt="AI-powered security collaboration between robot and human hand with digital shield" />
           </div>
         </div>
       </div>
@@ -1291,13 +1196,57 @@
     </section>
   </main>
 
+  <!-- COMMITMENT STRIP -->
+  <div class="commitment">
+    <div class="commitment-inner">
+      <h3>Our Commitment</h3>
+      <p>
+        Urban Sentinel is committed to reducing our carbon footprint and promoting sustainability in all operations.
+      </p>
+      <p>
+        We acknowledge the Traditional Custodians of the land on which we operate, and pay our respects to Elders
+        past, present and emerging. We recognise their continuing connection to land, waters and culture.
+      </p>
+      <p>
+        Urban Sentinel operates under ethical compliance systems which affirm dignity, consent-based technology
+        and non-invasive safety practices.
+      </p>
+    </div>
+  </div>
+
   <footer>
-    <div style="max-width:1200px;margin:0 auto;">
-      <p><strong>Urban Sentinel Pty Ltd – Advanced AI Security &amp; Robotics Service Providers</strong></p>
-      <p>AI-driven patrols, digital protection and SEO security uplift for businesses across Queensland and Australia.</p>
-      <small>
-        This page is informational only and does not constitute financial or legal advice.
-      </small>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo-block">
+          <img src="urban-sentinel-logo-light.png" alt="Urban Sentinel" />
+          <p>
+            Advanced security solutions for a safer tomorrow. Protecting communities and businesses with
+            cutting-edge technology and professional expertise.
+          </p>
+        </div>
+        <div>
+          <div class="footer-heading">Quick links</div>
+          <ul class="footer-links">
+            <li><a href="https://urbansentinel.com.au/">Home</a></li>
+            <li><a href="https://urbansentinel.com.au/mission">Mission</a></li>
+            <li><a href="https://urbansentinel.com.au/services">Services</a></li>
+            <li><a href="https://urbansentinel.com.au/why-us">Why Us</a></li>
+            <li><a href="https://urbansentinel.com.au/twu">TWU</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <div class="footer-heading">Contact info</div>
+          <p>Cairns, Queensland</p>
+          <p>Email: <a href="mailto:info@urbansentinel.com.au">info@urbansentinel.com.au</a></p>
+          <p style="font-size:0.8rem; opacity:0.9;">
+            Phone details are available via the main Urban Sentinel site.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Urban Sentinel Pty Ltd</span>
+        <span>Ethical AI • Trusted Safety • Future-Proof Security · This page is informational only and does not constitute financial or legal advice.</span>
+      </div>
     </div>
   </footer>
 
@@ -1455,10 +1404,10 @@
 
     function upliftText(score) {
       if (score >= 75) {
-        return "Surface signals look solid, but there is still room to tighten configuration and modern browser-level protections.";
+        return "Surface signals look solid, but there is still room to tighten configuration and modern protections.";
       }
       if (score >= 50) {
-        return "Looks fine at first glance, but the deeper signals point to weak stability, no clear edge shield and fragile performance under load.";
+        return "Looks fine at first glance, but deeper signals point to weak stability, no clear edge shield and fragile performance under load.";
       }
       return "From the outside your site looks easy to slow down or break. This uplift should be treated as a priority, not a cosmetic upgrade.";
     }
@@ -1499,7 +1448,7 @@
       const scoreGap = Math.max(0, safeScore - data.score);
       const upliftSummary = upliftText(data.score);
 
-      // HTTPS row
+      /* HTTPS row */
       let httpsTech, httpsHuman, httpsStatus, httpsSegments;
       if (data.httpsWorking === true) {
         httpsStatus = "OK";
@@ -1518,7 +1467,7 @@
         httpsSegments = 3;
       }
 
-      // Edge / Cloudflare row
+      /* Edge row */
       let edgeTech, edgeHuman, edgeStatus, edgeSegments;
       if (data.usesCloudflare === true) {
         edgeStatus = "Shielded";
@@ -1537,7 +1486,7 @@
         edgeSegments = 3;
       }
 
-      // Speed row
+      /* Speed row */
       let speedTech, speedHuman, speedStatus, speedSegments;
       const msText =
         data.latencyMs != null ? data.latencyMs + " ms" : "not measured";
@@ -1567,7 +1516,7 @@
         speedSegments = 2;
       }
 
-      // Hosting row
+      /* Hosting row */
       let hostingText = "We could not confidently identify your hosting environment from public data.";
       if (data.hostingInfo) {
         const parts = [];
@@ -1593,7 +1542,9 @@
           segHtml +=
             '<div class="scan-status-seg' +
             (i < count ? " on" : "") +
-            '"></div>';
+            '" style="--seg-delay:' +
+            (i * 0.08).toFixed(2) +
+            's"></div>';
         }
         return segHtml;
       }
@@ -1609,13 +1560,13 @@
 
       let html = "";
 
-      // HEADER
+      /* SUMMARY HEADER */
       html += `
         <div class="scan-summary-header">
           <h3 class="scan-summary-title">Surface scan summary for ${data.domain}</h3>
           <div class="scan-summary-score">
             <span class="scan-summary-score-label">Composite surface score</span>
-            <span class="scan-summary-score-value">${data.score}/100</span>
+            <span class="scan-summary-score-value"><span id="scoreValue">0</span>/100</span>
           </div>
           <p class="scan-summary-risk">
             Risk level:
@@ -1635,7 +1586,7 @@
         </div>
       `;
 
-      // MATRIX
+      /* MATRIX */
       html += `
         <div class="scan-matrix">
           <div class="scan-row">
@@ -1711,7 +1662,7 @@
         </p>
       `;
 
-      /* CTA grid: 2 buttons left, 2 right */
+      /* CTA GRID */
       html += `
         <div class="scan-actions-grid">
           <div class="scan-actions-col">
@@ -1723,9 +1674,9 @@
             </a>
           </div>
           <div class="scan-actions-col">
-            <a class="scan-actions-button" href="urban_sentinel_digital_uplift_overview.pdf">
+            <button type="button" class="scan-actions-button" id="downloadOverviewButton">
               Download Digital Security &amp; AI Uplift Overview (PDF)
-            </a>
+            </button>
             <button type="button" class="scan-actions-button" id="exportPdfButton">
               Export this report as PDF
             </button>
@@ -1733,6 +1684,7 @@
         </div>
       `;
 
+      /* REQUEST FORM */
       html += `
         <div class="request-form" id="requestFormContainer" style="display:none;">
           <h3>Request a full AI SEO Security uplift</h3>
@@ -1846,10 +1798,34 @@ Expected outcomes:
       resultEl.innerHTML = html;
       resultEl.style.display = "block";
 
-      // wire up buttons + form
+      /* Animate score counting up */
+      const scoreSpan = document.getElementById("scoreValue");
+      if (scoreSpan) {
+        const target = data.score;
+        const duration = 900;
+        const startTime = performance.now();
+        function tick(now) {
+          const progress = Math.min(1, (now - startTime) / duration);
+          const value = Math.round(progress * target);
+          scoreSpan.textContent = value;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+
+      /* Hook buttons */
       const exportBtn = document.getElementById("exportPdfButton");
       if (exportBtn) {
         exportBtn.onclick = () => window.print();
+      }
+
+      const downloadBtn = document.getElementById("downloadOverviewButton");
+      if (downloadBtn) {
+        downloadBtn.onclick = () => {
+          alert(
+            "We’re still finalising the Digital Security & AI Uplift overview PDF.\n\nFor now, you can export this report as a PDF or request a full AI SEO Security audit and we’ll send you tailored documentation."
+          );
+        };
       }
 
       const openBtn = document.getElementById("openRequestFormButton");
@@ -1857,10 +1833,10 @@ Expected outcomes:
       const requestForm = document.getElementById("requestForm");
 
       const domainSpan = document.getElementById("requestDomain");
-      const scoreSpan = document.getElementById("requestScore");
+      const scoreSpanStatic = document.getElementById("requestScore");
 
       if (domainSpan) domainSpan.textContent = data.domain;
-      if (scoreSpan) scoreSpan.textContent = data.score;
+      if (scoreSpanStatic) scoreSpanStatic.textContent = data.score;
 
       if (openBtn && formContainer) {
         openBtn.onclick = () => {
@@ -1975,7 +1951,7 @@ Expected outcomes:
       await runScan(domain);
     });
 
-    // Permalink + nav toggle
+    /* Permalink + nav toggle */
     window.addEventListener("load", () => {
       const hash = window.location.hash || "";
       if (hash.startsWith("#scan=")) {
