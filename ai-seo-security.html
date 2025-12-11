@@ -561,36 +561,161 @@
       background: rgba(56,189,248,0.85);
     }
 
-    .scan-actions-inline {
-      margin-top: 1.1rem;
+    /* CTA GRID UNDER RESULTS */
+
+    .scan-actions-grid {
+      margin-top: 1.4rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 720px) {
+      .scan-actions-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .scan-actions-col {
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
     }
 
-    .scan-actions-inline button,
-    .scan-actions-inline a {
-      padding: 0.65rem 1rem;
+    .scan-actions-button {
+      padding: 0.7rem 1rem;
       border-radius: 10px;
       border: 1px solid #1f2937;
       background: #0b1120;
       color: #e5e7eb;
       font-size: 0.9rem;
-      cursor: pointer;
       text-align: center;
+      cursor: pointer;
       text-decoration: none;
     }
 
-    .scan-actions-inline button.primary {
+    .scan-actions-button.primary {
       background: #1a4c7c;
       border-color: #1d4ed8;
       color: #f9fafb;
+      font-weight: 600;
+    }
+
+    .scan-actions-button:hover {
+      filter: brightness(1.05);
     }
 
     .scan-email-note-inline {
       font-size: 0.8rem;
       color: #9ca3af;
+      margin-top: 0.4rem;
+    }
+
+    /* REQUEST FORM */
+
+    .request-form {
+      margin-top: 1.4rem;
+      padding: 1.1rem 1rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid #1f2937;
+      background: #020617;
+    }
+
+    .request-form h3 {
+      margin-top: 0;
+      margin-bottom: 0.4rem;
+      font-size: 1.02rem;
+    }
+
+    .request-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .request-summary div span {
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.72rem;
+      color: #9ca3af;
+    }
+
+    .request-summary div strong {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .request-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    @media (min-width: 720px) {
+      .request-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .request-field label {
+      display: block;
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+      color: #e5e7eb;
+    }
+
+    .request-field input,
+    .request-field textarea {
+      width: 100%;
+      padding: 0.5rem 0.65rem;
+      border-radius: 8px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+    }
+
+    .request-field textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .request-field small {
+      display: block;
+      font-size: 0.75rem;
+      color: #9ca3af;
       margin-top: 0.25rem;
+    }
+
+    .request-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      margin-bottom: 0.4rem;
+    }
+
+    .request-checkbox input {
+      margin-top: 0.15rem;
+    }
+
+    .request-submit {
+      margin-top: 0.6rem;
+      padding: 0.7rem 1.05rem;
+      border-radius: 999px;
+      border: 1px solid #1d4ed8;
+      background: #1a4c7c;
+      color: #f9fafb;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .request-submit:hover {
+      filter: brightness(1.05);
     }
 
     @media (max-width: 700px) {
@@ -603,8 +728,9 @@
       header, #packages, #grants, footer {
         display: none;
       }
-      /* hide grant helper in PDF/print */
-      .helper-grid {
+      /* hide grant helper & request form in PDF */
+      .helper-grid,
+      .request-form {
         display: none !important;
       }
       body {
@@ -1025,43 +1151,6 @@
       return "From the outside your site looks easy to slow down or break. This uplift should be treated as a priority, not a cosmetic upgrade.";
     }
 
-    function emailMyResults(domain, score) {
-      const emailField = document.getElementById("emailCapture");
-      if (!emailField) {
-        alert("Could not find email field.");
-        return;
-      }
-      const clientEmail = emailField.value.trim();
-      if (!clientEmail || !clientEmail.includes("@")) {
-        alert("Please enter a valid email address so we can CC you.");
-        return;
-      }
-
-      const subject = `AI surface scan results for ${domain}`;
-      const body = `Hi Urban Sentinel team,
-
-Please see my surface scan results:
-
-Domain: ${domain}
-Composite score: ${score}/100
-
-I'd like to discuss an AI SEO Security uplift based on these findings.
-
-Contact email: ${clientEmail}
-
-(These results were generated from the Urban Sentinel surface scan page.)
-
-Thank you.`;
-
-      const mailtoLink =
-        "mailto:info@urbansentinel.com.au" +
-        `?cc=${encodeURIComponent(clientEmail)}` +
-        `&subject=${encodeURIComponent(subject)}` +
-        `&body=${encodeURIComponent(body)}`;
-
-      window.location.href = mailtoLink;
-    }
-
     async function copyGrantDescription() {
       const el = document.getElementById("grantDescription");
       if (!el) return;
@@ -1310,31 +1399,83 @@ Thank you.`;
         </p>
       `;
 
+      /* CTA grid: 2 buttons left, 2 right */
       html += `
-        <div style="margin-top:1.1rem;">
-          <h3>Email or save these results</h3>
-          <input
-            id="emailCapture"
-            placeholder="your-email@business.com"
-            style="padding:0.5rem 0.7rem; width:100%; border-radius:7px; border:1px solid #374151; background:#020617; color:#e5e7eb; font-size:0.9rem; margin:0.4rem 0 0.5rem;"
-          >
-          <div class="scan-actions-inline">
-            <button class="primary" onclick="emailMyResults('${data.domain}', ${data.score})">
-              Email results to Urban Sentinel (CC me)
+        <div class="scan-actions-grid">
+          <div class="scan-actions-col">
+            <button type="button" class="scan-actions-button primary" id="openRequestFormButton">
+              Request Full AI SEO Security Audit
             </button>
-            <button type="button" onclick="window.print()">
-              Export this page as a PDF report
-            </button>
-            <a href="mailto:info@urbansentinel.com.au?subject=Full%20AI%20SEO%20Security%20Uplift%20Request&body=I%E2%80%99d%20like%20to%20discuss%20a%20full%20uplift%20based%20on%20my%20scan%20results%20for%20${encodeURIComponent(
-              data.domain
-            )}">
-              Request a full AI SEO Security uplift plan
+            <a class="scan-actions-button" href="mailto:info@urbansentinel.com.au">
+              Email Urban Sentinel
             </a>
           </div>
-          <p class="scan-email-note-inline">
-            When you email the results, a copy goes to Urban Sentinel and you’re CC’d so you have your own record.
-            Long-term follow-up scheduling still lives in your email or CRM.
+          <div class="scan-actions-col">
+            <a class="scan-actions-button" href="urban_sentinel_digital_uplift_overview.pdf">
+              Download Digital Security &amp; AI Uplift Overview (PDF)
+            </a>
+            <button type="button" class="scan-actions-button" id="exportPdfButton">
+              Export this report as PDF
+            </button>
+          </div>
+        </div>
+      `;
+
+      html += `
+        <div class="request-form" id="requestFormContainer" style="display:none;">
+          <h3>Request a full AI SEO Security uplift</h3>
+          <p class="note" style="margin-top:0.2rem;">
+            We’ll use your scan results as the starting point and come back with a concrete plan, not a generic sales script.
           </p>
+          <form id="requestForm">
+            <div class="request-summary">
+              <div>
+                <span>Domain</span>
+                <strong id="requestDomain"></strong>
+              </div>
+              <div>
+                <span>Surface score</span>
+                <strong><span id="requestScore"></span>/100</strong>
+              </div>
+            </div>
+
+            <div class="request-grid">
+              <div class="request-field">
+                <label for="requestName">Your name</label>
+                <input id="requestName" type="text" required />
+              </div>
+              <div class="request-field">
+                <label for="requestCompany">Business name</label>
+                <input id="requestCompany" type="text" />
+              </div>
+              <div class="request-field">
+                <label for="requestEmail">Email</label>
+                <input id="requestEmail" type="email" required />
+              </div>
+              <div class="request-field">
+                <label for="requestPhone">Phone (optional)</label>
+                <input id="requestPhone" type="text" />
+              </div>
+            </div>
+
+            <div class="request-field">
+              <label for="requestMessage">What worries you most right now?</label>
+              <textarea id="requestMessage"></textarea>
+              <small>Examples: site goes down, strange traffic, rankings unstable, need grant-aligned plan, etc.</small>
+            </div>
+
+            <label class="request-checkbox">
+              <input type="checkbox" id="requestGrant" />
+              <span>I’d like you to consider options that can align with relevant grant or advisory programs where possible.</span>
+            </label>
+
+            <label class="request-checkbox">
+              <input type="checkbox" id="requestConsent" required />
+              <span>I agree Urban Sentinel can contact me about this request.</span>
+            </label>
+
+            <button type="submit" class="request-submit">Open request in my email</button>
+          </form>
         </div>
       `;
 
@@ -1392,6 +1533,65 @@ Expected outcomes:
 
       resultEl.innerHTML = html;
       resultEl.style.display = "block";
+
+      // wire up buttons + form
+      const exportBtn = document.getElementById("exportPdfButton");
+      if (exportBtn) {
+        exportBtn.onclick = () => window.print();
+      }
+
+      const openBtn = document.getElementById("openRequestFormButton");
+      const formContainer = document.getElementById("requestFormContainer");
+      const requestForm = document.getElementById("requestForm");
+
+      const domainSpan = document.getElementById("requestDomain");
+      const scoreSpan = document.getElementById("requestScore");
+
+      if (domainSpan) domainSpan.textContent = data.domain;
+      if (scoreSpan) scoreSpan.textContent = data.score;
+
+      if (openBtn && formContainer) {
+        openBtn.onclick = () => {
+          formContainer.style.display = "block";
+          formContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        };
+      }
+
+      if (requestForm) {
+        requestForm.onsubmit = (e) => {
+          e.preventDefault();
+          const name = document.getElementById("requestName").value.trim();
+          const company = document.getElementById("requestCompany").value.trim();
+          const email = document.getElementById("requestEmail").value.trim();
+          const phone = document.getElementById("requestPhone").value.trim();
+          const message = document.getElementById("requestMessage").value.trim();
+          const wantsGrant = document.getElementById("requestGrant").checked;
+          const consent = document.getElementById("requestConsent").checked;
+
+          if (!email || !email.includes("@")) {
+            alert("Please add a valid email address.");
+            return;
+          }
+          if (!consent) {
+            alert("Please tick the consent box so we know we’re allowed to contact you.");
+            return;
+          }
+
+          const subject = `AI SEO Security uplift request – ${data.domain}`;
+          let body = `Hi Urban Sentinel,\n\nI'd like a full AI SEO Security uplift based on my scan results.\n\nDomain: ${data.domain}\nSurface score: ${data.score}/100\nSpeed: ${data.speedCategory}\nRisk level: ${riskLabel}\n\nName: ${name || "(not provided)"}\nBusiness: ${company || "(not provided)"}\nEmail: ${email}\nPhone: ${phone || "(not provided)"}\n\nWhat worries me most:\n${message || "(not provided)"}\n\nGrant alignment: ${
+            wantsGrant
+              ? "Yes – please consider options that align with grant/advisory programs if relevant."
+              : "Not essential – I mainly care about the uplift itself."
+          }\n\nThank you.`;
+
+          const mailto =
+            "mailto:info@urbansentinel.com.au" +
+            `?subject=${encodeURIComponent(subject)}` +
+            `&body=${encodeURIComponent(body)}`;
+
+          window.location.href = mailto;
+        };
+      }
 
       requestAnimationFrame(() => {
         resultEl.classList.add("visible");
