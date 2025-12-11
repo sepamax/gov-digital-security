@@ -69,6 +69,98 @@
       color: #6b7280;
     }
 
+    /* NAVIGATION (matches dark site style) */
+    #main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(2, 6, 23, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid #111827;
+    }
+    .nav-shell {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.55rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .nav-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .nav-brand img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+    .nav-brand span {
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #e5f0ff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      font-size: 0.86rem;
+    }
+    .nav-links a {
+      color: #cbd5f5;
+      text-decoration: none;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+    .nav-links a:hover {
+      color: #7dd3fc;
+    }
+    #navToggle {
+      display: none;
+      border-radius: 999px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: #e5e7eb;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    #navToggle span {
+      display: inline-block;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        right: 1.25rem;
+        top: 3.1rem;
+        background: #020617;
+        border-radius: 12px;
+        border: 1px solid #111827;
+        padding: 0.6rem 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.45rem;
+        width: min(220px, 75vw);
+        display: none;
+      }
+      .nav-links.nav-links-open {
+        display: flex;
+      }
+      #navToggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
     /* HERO */
     .hero {
       background: linear-gradient(135deg, #020617, #0b1220);
@@ -88,7 +180,25 @@
       pointer-events: none;
       opacity: 0.8;
     }
-    .hero-inner { position: relative; z-index: 1; }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+    .hero-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+    .hero-copy {
+      flex: 3;
+      min-width: 0;
+    }
+    .hero-visual {
+      flex: 2;
+      min-width: 0;
+      display: flex;
+      align-items: stretch;
+    }
     .hero-eyebrow {
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -146,1535 +256,73 @@
       color: var(--muted);
     }
 
+    /* HERO VISUAL PLACEHOLDER */
+    .hero-visual-card {
+      width: 100%;
+      border-radius: 18px;
+      padding: 1rem 1rem 1.2rem;
+      background:
+        radial-gradient(circle at top left, rgba(56,189,248,0.35), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(15,23,42,1), #020617);
+      border: 1px solid rgba(148,163,184,0.5);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .hero-visual-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #c7d2fe;
+    }
+    .hero-visual-main {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .hero-visual-score {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #e5f0ff;
+    }
+    .hero-visual-caption {
+      font-size: 0.8rem;
+      color: #c7d2fe;
+      max-width: 170px;
+    }
+    .hero-visual-bars {
+      display: flex;
+      gap: 4px;
+      margin-top: 0.15rem;
+    }
+    .hero-visual-bars span {
+      flex: 1;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.7);
+    }
+    .hero-visual-bars span:nth-child(3),
+    .hero-visual-bars span:nth-child(4),
+    .hero-visual-bars span:nth-child(5) {
+      background: rgba(56,189,248,0.9);
+    }
+    .hero-visual-note {
+      font-size: 0.78rem;
+      color: #a5b4fc;
+      margin-top: 0.35rem;
+    }
+
+    @media (min-width: 900px) {
+      .hero-layout {
+        flex-direction: row;
+        align-items: stretch;
+      }
+    }
+
     /* SECTIONS */
     section {
       margin-top: 2.5rem;
       background: rgba(2, 6, 23, 0.7);
-      border-radius: 14px;
-      padding: 1.75rem 1.5rem 2rem;
-      border: 1px solid #111827;
-    }
-    section.alt { background: rgba(15, 23, 42, 0.9); }
-    h2 {
-      font-size: 1.4rem;
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-      color: #e5f0ff;
-    }
-    h3 {
-      margin-top: 0.5rem;
-      margin-bottom: 0.4rem;
-      font-size: 1.03rem;
-      color: #e5f0ff;
-    }
-    p { font-size: 0.95rem; }
-
-    .grid {
-      display: grid;
-      gap: 1rem;
-    }
-    @media (min-width: 800px) {
-      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-
-    .card {
-      background: var(--card);
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      padding: 1rem 1rem 1.1rem;
-      font-size: 0.9rem;
-    }
-    .card.danger {
-      border-color: #7f1d1d;
-      background: radial-gradient(circle at top left, #3f1d1d, #050816);
-    }
-    ul {
-      padding-left: 1.1rem;
-      margin: 0.4rem 0 0;
-      font-size: 0.9rem;
-    }
-    li { margin-bottom: 0.25rem; }
-
-    .note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.75rem;
-    }
-
-    /* SCAN WIDGET */
-    .scan-widget {
-      margin-top: 1rem;
-      background: #020617;
-      border-radius: var(--radius);
-      border: 1px solid #1f2937;
-      padding: 1rem 1rem 1.2rem;
-    }
-    .scan-widget label {
-      font-size: 0.86rem;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-    .scan-input-row {
-      display: flex;
-      gap: 0.4rem;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-    .scan-input-row span {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-    .scan-input-row input {
-      flex: 1;
-      padding: 0.55rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid #374151;
-      background: #020617;
-      color: var(--text);
-      font-size: 0.9rem;
-      outline: none;
-    }
-    .scan-input-row button {
-      padding: 0.55rem 1rem;
-      border-radius: 999px;
-      border: 1px solid #1d4ed8;
-      background: var(--accent);
-      color: #e5f0ff;
-      font-size: 0.9rem;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .scan-input-row button:disabled {
-      opacity: 0.6;
-      cursor: default;
-    }
-    .scan-error {
-      color: var(--danger);
-      font-size: 0.85rem;
-    }
-
-    .scan-result {
-      margin-top: 0.8rem;
-      padding-top: 0.6rem;
-      border-top: 1px dashed #1f2937;
-      font-size: 0.9rem;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-    }
-    .scan-result.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      margin-left: 0.3rem;
-    }
-    .badge-fast { background: rgba(34, 197, 94, 0.2); color: var(--success); }
-    .badge-moderate { background: rgba(234, 179, 8, 0.15); color: var(--warning); }
-    .badge-slow { background: rgba(248, 113, 113, 0.18); color: var(--danger); }
-    .badge-unknown { background: rgba(148, 163, 184, 0.2); color: var(--muted); }
-
-    .risk-chip {
-      display: inline-block;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      margin-top: 0.2rem;
-    }
-    .risk-low { background: rgba(34,197,94,0.16); color: #4ade80; }
-    .risk-medium { background: rgba(234,179,8,0.16); color: #fbbf24; }
-    .risk-high { background: rgba(248,113,113,0.16); color: #f97373; }
-
-    /* GRANT HELPER LAYOUT UNDER RESULTS */
-    .helper-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-    .helper-col {
-      flex: 1;
-    }
-    .helper-card {
-      background: #020617;
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      padding: 1rem;
-    }
-    .helper-title {
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-      font-size: 0.98rem;
-    }
-    .helper-textarea {
-      width: 100%;
-      min-height: 150px;
-      border-radius: 6px;
-      border: 1px solid #374151;
-      padding: 0.6rem;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 0.85rem;
-      resize: vertical;
-    }
-    .helper-btn {
-      margin-top: 0.4rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 6px;
-      border: none;
-      cursor: pointer;
-      background: #1a4c7c;
-      color: #ffffff;
-      font-size: 0.85rem;
-    }
-    .helper-links ul {
-      padding-left: 1.1rem;
-      margin: 0.35rem 0 0;
-      font-size: 0.86rem;
-    }
-    .helper-links p {
-      font-size: 0.88rem;
-    }
-    .helper-links small {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    @media (min-width: 800px) {
-      .helper-grid {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-    }
-
-    /* PACKAGES */
-    .package-price {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-    .package-tag {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--muted);
-    }
-
-    /* FOOT */
-    footer {
-      max-width: 1100px;
-      margin: 0 auto 2rem;
-      padding: 0 1.25rem;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* NEW: pretty results layout (IT left, visual right) */
-
-    .scan-summary-header {
-      border-radius: 14px;
-      padding: 1.2rem 1.2rem 1.4rem;
-      margin-bottom: 1.3rem;
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.2), #020617);
-      border: 1px solid #1f2937;
-    }
-
-    .scan-summary-title {
-      margin: 0 0 0.4rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-
-    .scan-summary-score {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 0.4rem;
-      margin: 0.25rem 0 0.35rem;
-    }
-
-    .scan-summary-score-label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: #9ca3af;
-    }
-
-    .scan-summary-score-value {
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-
-    .scan-summary-risk {
-      font-size: 0.85rem;
-      margin: 0.1rem 0 0.5rem;
-      color: #e5e7eb;
-    }
-
-    .scan-summary-risk-badge {
-      display: inline-block;
-      margin-left: 0.4rem;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .scan-summary-risk-low {
-      background: rgba(34,197,94,0.22);
-      color: #4ade80;
-    }
-
-    .scan-summary-risk-moderate {
-      background: rgba(234,179,8,0.2);
-      color: #facc15;
-    }
-
-    .scan-summary-risk-elevated {
-      background: rgba(248,113,113,0.2);
-      color: #f97373;
-    }
-
-    .scan-summary-meter {
-      display: inline-flex;
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.6);
-      margin-bottom: 0.4rem;
-    }
-
-    .scan-summary-meter span {
-      padding: 0.25rem 0.7rem;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: #9ca3af;
-      background: rgba(15,23,42,0.85);
-    }
-
-    .scan-summary-meter span.active {
-      background: rgba(56,189,248,0.25);
-      color: #e5e7eb;
-    }
-
-    .scan-summary-note {
-      font-size: 0.85rem;
-      max-width: 40rem;
-      color: #c7d2fe;
-    }
-
-    .scan-matrix {
-      border-radius: 14px;
-      border: 1px solid #1f2937;
-      background: #020617;
-      padding: 0.75rem 1rem 1rem;
-    }
-
-    .scan-row {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-      gap: 1.2rem;
-      padding: 0.9rem 0;
-      border-bottom: 1px solid rgba(15,23,42,0.4);
-    }
-
-    .scan-row:last-child {
-      border-bottom: none;
-    }
-
-    .scan-row-left h4 {
-      margin: 0 0 0.25rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .scan-row-left p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-
-    .scan-row-right {
-      border-radius: 12px;
-      padding: 0.7rem 0.9rem;
-      background: radial-gradient(circle at top left, rgba(56,189,248,0.18), #020617);
-      border: 1px solid rgba(148,163,184,0.5);
-    }
-
-    .scan-status-pill {
-      display: inline-block;
-      padding: 0.15rem 0.65rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .scan-status-ok {
-      background: rgba(34,197,94,0.15);
-      color: #4ade80;
-    }
-
-    .scan-status-issue {
-      background: rgba(248,113,113,0.18);
-      color: #f97373;
-    }
-
-    .scan-status-warning {
-      background: rgba(234,179,8,0.18);
-      color: #facc15;
-    }
-
-    .scan-status-neutral {
-      background: rgba(148,163,184,0.2);
-      color: #e5e7eb;
-    }
-
-    .scan-row-visual-text {
-      margin: 0.4rem 0 0;
-      font-size: 0.88rem;
-      color: #e5e7eb;
-    }
-
-    .scan-status-strip {
-      display: flex;
-      gap: 4px;
-      margin-top: 0.45rem;
-    }
-
-    .scan-status-seg {
-      flex: 1;
-      height: 6px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.7);
-    }
-
-    .scan-status-seg.on {
-      background: rgba(56,189,248,0.85);
-    }
-
-    /* CTA GRID UNDER RESULTS */
-
-    .scan-actions-grid {
-      margin-top: 1.4rem;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    @media (min-width: 720px) {
-      .scan-actions-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .scan-actions-col {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .scan-actions-button {
-      padding: 0.7rem 1rem;
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      background: #0b1120;
-      color: #e5e7eb;
-      font-size: 0.9rem;
-      text-align: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
-
-    .scan-actions-button.primary {
-      background: #1a4c7c;
-      border-color: #1d4ed8;
-      color: #f9fafb;
-      font-weight: 600;
-    }
-
-    .scan-actions-button:hover {
-      filter: brightness(1.05);
-    }
-
-    .scan-email-note-inline {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.4rem;
-    }
-
-    /* REQUEST FORM */
-
-    .request-form {
-      margin-top: 1.4rem;
-      padding: 1.1rem 1rem 1.2rem;
-      border-radius: 14px;
-      border: 1px solid #1f2937;
-      background: #020617;
-    }
-
-    .request-form h3 {
-      margin-top: 0;
-      margin-bottom: 0.4rem;
-      font-size: 1.02rem;
-    }
-
-    .request-summary {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.85rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .request-summary div span {
-      display: block;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.72rem;
-      color: #9ca3af;
-    }
-
-    .request-summary div strong {
-      font-size: 0.9rem;
-      color: #e5e7eb;
-    }
-
-    .request-grid {
-      display: grid;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
-    }
-
-    @media (min-width: 720px) {
-      .request-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .request-field label {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 0.2rem;
-      color: #e5e7eb;
-    }
-
-    .request-field input,
-    .request-field textarea {
-      width: 100%;
-      padding: 0.5rem 0.65rem;
-      border-radius: 8px;
-      border: 1px solid #374151;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 0.9rem;
-    }
-
-    .request-field textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-
-    .request-field small {
-      display: block;
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-top: 0.25rem;
-    }
-
-    .request-checkbox {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: #e5e7eb;
-      margin-bottom: 0.4rem;
-    }
-
-    .request-checkbox input {
-      margin-top: 0.15rem;
-    }
-
-    .request-submit {
-      margin-top: 0.6rem;
-      padding: 0.7rem 1.05rem;
-      border-radius: 999px;
-      border: 1px solid #1d4ed8;
-      background: #1a4c7c;
-      color: #f9fafb;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .request-submit:hover {
-      filter: brightness(1.05);
-    }
-
-    @media (max-width: 700px) {
-      .scan-row {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    @media print {
-      header, #packages, #grants, footer {
-        display: none;
-      }
-      /* hide grant helper & request form in PDF */
-      .helper-grid,
-      .request-form {
-        display: none !important;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-      main {
-        padding-top: 1rem;
-      }
-      section {
-        background: white;
-        border: none;
-      }
-      #print-logo {
-        display: block;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- HEADER SHOWN ONLY IN PRINT / PDF EXPORT -->
-  <div id="print-logo">
-    <div id="print-logo-inner">
-      <img src="urban-sentinel-logo-light.png" alt="Urban Sentinel logo" />
-      <div>
-        <div id="print-logo-title">AI Security Scan Results</div>
-        <div id="print-logo-subtitle">
-          Prepared by Urban Sentinel Pty Ltd – AI SEO Security &amp; Digital Uplift
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <div class="hero">
-      <div class="hero-inner">
-        <div class="hero-eyebrow">Urban Sentinel – AI SEO Security</div>
-        <h1>Scan, Harden and Uplift Your Digital Footprint</h1>
-        <p class="lead">
-          This page gives you a quick surface scan of your domain, outlines AI SEO Security packages
-          and explains how your digital uplift can align with Australian government grant priorities.
-          No bullshit, no fake “fully-funded” promises.
-        </p>
-        <div class="hero-actions">
-          <a href="#scan" class="btn btn-primary">Run a surface scan</a>
-          <a href="#packages" class="btn btn-outline">View AI SEO Security packages</a>
-          <a href="#grants" class="btn btn-outline">Check grant alignment</a>
-        </div>
-        <p class="hero-meta">
-          This scanner is high-level only. It does not replace a full security audit or penetration test.
-        </p>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- SCAN SECTION -->
-    <section id="scan">
-      <h2>1. Surface scan your domain</h2>
-      <p>
-        Enter your primary website domain. We’ll run a lightweight, automated surface check using public
-        information only — focusing on basic speed, HTTPS reachability and whether your DNS suggests edge
-        protection like Cloudflare. You’ll see a strategic summary with a clear recommended next step.
-      </p>
-
-      <div class="scan-widget">
-        <form id="scanForm">
-          <label for="domain">Website domain to scan</label>
-          <div class="scan-input-row">
-            <span>https://</span>
-            <input
-              id="domain"
-              name="domain"
-              type="text"
-              placeholder="example.com"
-              autocomplete="off"
-            />
-            <button type="submit" id="scanButton">Run surface scan</button>
-          </div>
-          <div id="scanError" class="scan-error" style="display:none;"></div>
-        </form>
-
-        <div id="scanResult" class="scan-result" style="display:none;"></div>
-      </div>
-
-      <p class="note">
-        This tool only uses public information accessible from the browser. It cannot see private
-        configuration inside your hosting, Cloudflare or other platforms. It’s designed to flag obvious
-        risk and performance issues, not to expose your full setup or scrape search engine results.
-      </p>
-    </section>
-
-    <!-- PACKAGES SECTION -->
-    <section id="packages" class="alt">
-      <h2>2. AI SEO Security packages</h2>
-      <p>
-        Every site is different, but most businesses fall into one of these three patterns. Final pricing
-        depends on risk, complexity and scope — these ranges are for guidance and planning only.
-      </p>
-
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="package-tag">Package 1</div>
-          <h3>Essentials Hardening &amp; SEO Foundation</h3>
-          <div class="package-price">Approx. $950 – $1,850</div>
-          <ul>
-            <li>Lock down admin and contact forms.</li>
-            <li>Basic firewall rules and bot filtering.</li>
-            <li>Core SSL / HTTPS hygiene review.</li>
-            <li>Fix obvious technical SEO errors.</li>
-            <li>Image and asset optimisation for speed.</li>
-          </ul>
-          <p class="note">
-            Best for small brochure sites, trades, local services and early-stage businesses.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="package-tag">Package 2</div>
-          <h3>Full AI SEO Security Uplift</h3>
-          <div class="package-price">Approx. $2,500 – $5,500</div>
-          <ul>
-            <li>Deeper hardening across hosting, DNS and WAF.</li>
-            <li>AI-assisted keyword and intent analysis.</li>
-            <li>Structured data and crawlability improvements.</li>
-            <li>Performance tuning across key templates.</li>
-            <li>AI readiness and digital risk review.</li>
-          </ul>
-          <p class="note">
-            Designed for businesses that rely on their website for real lead flow or revenue.
-          </p>
-        </div>
-
-        <div class="card">
-          <div class="package-tag">Package 3</div>
-          <h3>Ongoing Monitoring &amp; Optimisation</h3>
-          <div class="package-price">$290 – $690 / month</div>
-          <ul>
-            <li>Regular security and uptime checks.</li>
-            <li>Performance and core-web-vitals tracking.</li>
-            <li>Lightweight SEO adjustments each month.</li>
-            <li>Alerting when something breaks or slows down.</li>
-            <li>Quarterly review of AI + digital risk posture.</li>
-          </ul>
-          <p class="note">
-            For organisations that want their digital footprint treated like infrastructure, not a one-off project.
-          </p>
-        </div>
-      </div>
-
-      <p class="note">
-        All work is documented so you can share it with internal stakeholders, accountants or grant advisors.
-      </p>
-    </section>
-
-    <!-- GRANTS SECTION -->
-    <section id="grants">
-      <h2>3. Is your uplift likely to align with a government grant?</h2>
-      <p>
-        Programs change constantly, but the pattern is similar: governments will often support
-        <strong>digital capability uplift, cyber security resilience, AI readiness and sometimes strategic
-          digital marketing or website upgrades</strong> — especially when they improve competitiveness,
-        productivity or export potential.
-      </p>
-
-      <div class="grid grid-2">
-        <div class="card">
-          <h3>Signals you may be eligible</h3>
-          <ul>
-            <li>You have an active ABN and operate in Australia.</li>
-            <li>You’re a for-profit business, not a hobby or side project.</li>
-            <li>You rely on digital systems: website, cloud apps, email, CRM, etc.</li>
-            <li>Your revenue and headcount sit inside “small business” ranges for your state.</li>
-            <li>
-              You can show that digital security, AI and online visibility will improve your
-              competitiveness, customer experience or growth.
-            </li>
-          </ul>
-        </div>
-
-        <div class="card danger">
-          <h3>Common reasons businesses are not eligible</h3>
-          <ul>
-            <li>Sole traders with no real digital operations.</li>
-            <li>Not located in the region the grant actually covers.</li>
-            <li>Revenue above the program cap or too many employees.</li>
-            <li>
-              Trying to fund excluded items only – such as CCTV, alarm systems, generic hardware or wages.
-            </li>
-            <li>
-              Wanting a <strong>pure marketing or SEO-only campaign</strong> with no security or capability uplift.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <p>
-        Some programs (for example, Business Basics and other small-business digital grants in Australia)
-        specifically support activities like <strong>strategic marketing services, website build/upgrades
-        and digital marketing strategy</strong> when they clearly enhance digital capabilities and business
-        performance. Your exact eligibility depends on your state, sector, revenue and timing of the grant
-        round.
-      </p>
-
-      <p>
-        Urban Sentinel does <strong>not</strong> lodge applications on your behalf and we never guarantee
-        funding. What we do is:
-      </p>
-      <ul>
-        <li>Deliver serious digital security, AI and SEO uplift work.</li>
-        <li>Document the changes in plain English plus technical detail underneath.</li>
-        <li>
-          Provide a Government-Aligned Digital Security Uplift Plan (GADS-UP) you can use as evidence with
-          your accountant, advisor or grant consultant.
-        </li>
-      </ul>
-
-      <div class="card" style="margin-top:1.2rem;">
-        <h3>Where to look for relevant grants</h3>
-        <ul>
-          <li>
-            <a href="https://business.gov.au/grants-and-programs" target="_blank" rel="noopener">
-              Australian Government – Grants &amp; Programs Finder
-            </a>
-          </li>
-          <li>
-            <a href="https://business.gov.au/expertise-and-advice/small-business-cyber-resilience-service" target="_blank" rel="noopener">
-              Small Business Cyber Resilience Service (free 1:1 cyber support)
-            </a>
-          </li>
-          <li>
-            <a href="https://www.business.qld.gov.au/running-business/support-services/financial/grants" target="_blank" rel="noopener">
-              Business Queensland – Small business grants &amp; schedules
-            </a>
-          </li>
-          <li>
-            <a href="https://www.grants.services.qld.gov.au/" target="_blank" rel="noopener">
-              Queensland Government Grants Finder
-            </a>
-          </li>
-        </ul>
-        <p class="note">
-          These links are provided for convenience only. Urban Sentinel does not administer or guarantee any grant programs.
-        </p>
-      </div>
-
-      <p class="note">
-        Always check the latest guidelines for the specific program you’re considering, or speak with a
-        qualified advisor. Grants are a bonus, not a guarantee.
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    Urban Sentinel Pty Ltd · AI-Driven Digital Security &amp; Patrols · This page is informational only and
-    does not constitute financial or legal advice.
-  </footer>
-
-  <script>
-    const form = document.getElementById("scanForm");
-    const domainInput = document.getElementById("domain");
-    const errorEl = document.getElementById("scanError");
-    const resultEl = document.getElementById("scanResult");
-    const button = document.getElementById("scanButton");
-
-    function normaliseDomain(value) {
-      if (!value) return "";
-      return value
-        .trim()
-        .toLowerCase()
-        .replace(/^https?:\/\//i, "")
-        .replace(/\/.*$/, "");
-    }
-
-    async function lookupDns(domain) {
-      const out = {
-        nsNames: [],
-        ip: null,
-        usesCloudflare: null,
-      };
-
-      try {
-        const nsRes = await fetch(
-          "https://dns.google/resolve?name=" +
-            encodeURIComponent(domain) +
-            "&type=NS"
-        );
-        if (nsRes.ok) {
-          const nsData = await nsRes.json();
-          const answers = nsData.Answer || [];
-          out.nsNames = answers.map((a) => String(a.data || "").toLowerCase());
-          out.usesCloudflare = out.nsNames.some((n) =>
-            n.includes("cloudflare")
-          );
-        }
-      } catch (e) {
-        out.usesCloudflare = null;
-      }
-
-      try {
-        const aRes = await fetch(
-          "https://dns.google/resolve?name=" +
-            encodeURIComponent(domain) +
-            "&type=A"
-        );
-        if (aRes.ok) {
-          const aData = await aRes.json();
-          const answers = aData.Answer || [];
-          const first = answers.find((a) => a.data);
-          if (first) out.ip = first.data;
-        }
-      } catch (e) {
-        out.ip = null;
-      }
-
-      return out;
-    }
-
-    async function lookupHosting(ip) {
-      if (!ip) return null;
-      try {
-        const res = await fetch("https://ipwho.is/" + encodeURIComponent(ip));
-        if (!res.ok) return null;
-        const data = await res.json();
-        if (!data.success) return null;
-        return {
-          continent: data.continent || null,
-          country: data.country || null,
-          org: data.connection && data.connection.org ? data.connection.org : null,
-          isp: data.connection && data.connection.isp ? data.connection.isp : null,
-        };
-      } catch (e) {
-        return null;
-      }
-    }
-
-    async function measureLatency(domain) {
-      const result = {
-        latencyMs: null,
-        httpsWorking: null,
-      };
-
-      return new Promise((resolve) => {
-        const img = new Image();
-        const start = performance.now();
-        let done = false;
-
-        const finish = (status) => {
-          if (done) return;
-          done = true;
-          const duration = performance.now() - start;
-          result.latencyMs = Math.round(duration);
-          result.httpsWorking = status === "ok";
-          resolve(result);
-        };
-
-        const timer = setTimeout(() => finish("timeout"), 6000);
-
-        img.onload = () => {
-          clearTimeout(timer);
-          finish("ok");
-        };
-        img.onerror = () => {
-          clearTimeout(timer);
-          finish("error");
-        };
-
-        img.src =
-          "https://" + domain + "/favicon.ico?cacheBust=" + Date.now();
-      });
-    }
-
-    function classifySpeed(latencyMs) {
-      if (latencyMs == null) return "Unknown";
-      if (latencyMs < 500) return "Fast";
-      if (latencyMs < 1500) return "Moderate";
-      if (latencyMs < 4000) return "Slow";
-      return "No response / very slow";
-    }
-
-    function buildScore(latencyMs, usesCloudflare, hostingInfo) {
-      let score = 50;
-
-      if (latencyMs != null) {
-        if (latencyMs < 500) score += 20;
-        else if (latencyMs < 1500) score += 10;
-        else if (latencyMs < 4000) score -= 10;
-        else score -= 20;
-      } else {
-        score -= 5;
-      }
-
-      if (usesCloudflare === true) score += 10;
-      else if (usesCloudflare === false) score -= 5;
-
-      if (hostingInfo && hostingInfo.country) {
-        if (hostingInfo.country === "Australia") score += 5;
-      }
-
-      if (score < 0) score = 0;
-      if (score > 100) score = 100;
-      return score;
-    }
-
-    function classifyRisk(score) {
-      if (score >= 75) return "Lower (but not zero)";
-      if (score >= 50) return "Moderate";
-      return "Elevated";
-    }
-
-    function upliftText(score) {
-      if (score >= 75) {
-        return "Surface signals look solid, but there is still room to tighten configuration and modern browser-level protections.";
-      }
-      if (score >= 50) {
-        return "Looks fine at first glance, but the deeper signals point to weak stability, no clear edge shield and fragile performance under load.";
-      }
-      return "From the outside your site looks easy to slow down or break. This uplift should be treated as a priority, not a cosmetic upgrade.";
-    }
-
-    async function copyGrantDescription() {
-      const el = document.getElementById("grantDescription");
-      if (!el) return;
-      const text = el.value;
-
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          el.select();
-          el.setSelectionRange(0, 99999);
-          document.execCommand("copy");
-        }
-        alert("Grant description copied. Paste it into your application form.");
-      } catch (e) {
-        alert("Could not automatically copy. Please select the text and press Ctrl+C (Cmd+C on Mac).");
-      }
-    }
-
-    function renderResult(data) {
-      if (!data) {
-        resultEl.style.display = "none";
-        resultEl.classList.remove("visible");
-        return;
-      }
-
-      const riskLabel = classifyRisk(data.score);
-      const riskClass =
-        riskLabel.startsWith("Lower") ? "low" :
-        riskLabel === "Moderate" ? "moderate" :
-        "elevated";
-
-      const safeScore = 75;
-      const scoreGap = Math.max(0, safeScore - data.score);
-      const upliftSummary = upliftText(data.score);
-
-      // HTTPS row
-      let httpsTech, httpsHuman, httpsStatus, httpsSegments;
-      if (data.httpsWorking === true) {
-        httpsStatus = "OK";
-        httpsTech = "HTTPS responded successfully during this simple favicon check.";
-        httpsHuman = "We could reach your site over HTTPS. This is a basic reachability check, not a full TLS audit.";
-        httpsSegments = 4;
-      } else if (data.httpsWorking === false) {
-        httpsStatus = "Issue";
-        httpsTech = "HTTPS request failed or timed out from this location.";
-        httpsHuman = "Browsers and Google may see your site as unstable or unsafe if HTTPS is unreliable.";
-        httpsSegments = 2;
-      } else {
-        httpsStatus = "Unknown";
-        httpsTech = "HTTPS status couldn’t be confirmed from this test.";
-        httpsHuman = "We couldn’t confidently check HTTPS, so this should be reviewed manually.";
-        httpsSegments = 3;
-      }
-
-      // Edge / Cloudflare row
-      let edgeTech, edgeHuman, edgeStatus, edgeSegments;
-      if (data.usesCloudflare === true) {
-        edgeStatus = "Shielded";
-        edgeTech = "Cloudflare-style name servers detected in public DNS.";
-        edgeHuman = "There appears to be an edge shield in front of your site, but configuration quality still matters.";
-        edgeSegments = 4;
-      } else if (data.usesCloudflare === false) {
-        edgeStatus = "Exposed";
-        edgeTech = "No Cloudflare-style name servers detected; traffic likely hits the origin directly.";
-        edgeHuman = "Your site looks directly exposed to the internet with no obvious edge shield in front.";
-        edgeSegments = 2;
-      } else {
-        edgeStatus = "Unknown";
-        edgeTech = "DNS edge signal was inconclusive.";
-        edgeHuman = "We couldn’t read a clear edge signal; treat this as unverified rather than safe.";
-        edgeSegments = 3;
-      }
-
-      // Speed row
-      let speedTech, speedHuman, speedStatus, speedSegments;
-      const msText =
-        data.latencyMs != null ? data.latencyMs + " ms" : "not measured";
-
-      if (data.speedCategory === "Fast") {
-        speedStatus = "Fast";
-        speedTech = `Round-trip latency was ${msText}, within a healthy range for basic checks.`;
-        speedHuman = "Base speed looks strong, but real traffic and heavy pages can still behave differently.";
-        speedSegments = 5;
-      } else if (data.speedCategory === "Moderate") {
-        speedStatus = "Moderate";
-        speedTech = `Round-trip latency was ${msText}, acceptable but not impressive.`;
-        speedHuman = "Feels okay in normal conditions, but likely to wobble during busy periods or bot activity.";
-        speedSegments = 3;
-      } else if (
-        data.speedCategory === "Slow" ||
-        data.speedCategory === "No response / very slow"
-      ) {
-        speedStatus = "Slow";
-        speedTech = `Round-trip latency was ${msText}, which is slow for modern sites.`;
-        speedHuman = "Visitors and Google will feel this as lag, especially on mobile or weak connections.";
-        speedSegments = 1;
-      } else {
-        speedStatus = "Unknown";
-        speedTech = "Latency could not be measured reliably from this location.";
-        speedHuman = "We couldn’t get a clean speed signal; treat this as a risk until proven otherwise.";
-        speedSegments = 2;
-      }
-
-      // Hosting row
-      let hostingText = "We could not confidently identify your hosting environment from public data.";
-      if (data.hostingInfo) {
-        const parts = [];
-        if (data.hostingInfo.org) parts.push(data.hostingInfo.org);
-        else if (data.hostingInfo.isp) parts.push(data.hostingInfo.isp);
-        if (data.hostingInfo.country) parts.push(data.hostingInfo.country);
-        if (parts.length) {
-          hostingText =
-            "Public signals suggest your site is hosted with " +
-            parts.join(", ") +
-            ". This only reveals the provider, not how safely the site is configured.";
-        }
-      }
-      const hostingTech = hostingText;
-      const hostingHuman =
-        "Think of this as the building your site lives in. The real security comes from how that building is locked and monitored.";
-      const hostingStatus = "Neutral";
-      const hostingSegments = 3;
-
-      function renderSegments(count) {
-        let segHtml = "";
-        for (let i = 0; i < 5; i++) {
-          segHtml +=
-            '<div class="scan-status-seg' +
-            (i < count ? " on" : "") +
-            '"></div>';
-        }
-        return segHtml;
-      }
-
-      function statusClass(status) {
-        if (status === "OK" || status === "Fast" || status === "Shielded")
-          return "ok";
-        if (status === "Slow" || status === "Issue" || status === "Exposed")
-          return "issue";
-        if (status === "Moderate" || status === "Warning") return "warning";
-        return "neutral";
-      }
-
-      let html = "";
-
-      // HEADER
-      html += `
-        <div class="scan-summary-header">
-          <h3 class="scan-summary-title">Surface scan summary for ${data.domain}</h3>
-          <div class="scan-summary-score">
-            <span class="scan-summary-score-label">Composite surface score</span>
-            <span class="scan-summary-score-value">${data.score}/100</span>
-          </div>
-          <p class="scan-summary-risk">
-            Risk level:
-            <span class="scan-summary-risk-badge scan-summary-risk-${riskClass}">
-              ${riskLabel}
-            </span>
-          </p>
-          <div class="scan-summary-meter">
-            <span class="${riskLabel.startsWith("Lower") ? "active" : ""}">Low</span>
-            <span class="${riskLabel === "Moderate" ? "active" : ""}">Moderate</span>
-            <span class="${riskLabel === "Elevated" ? "active" : ""}">High</span>
-          </div>
-          <p class="scan-summary-note">
-            ${upliftSummary} You are about ${scoreGap} points away from the “comfortable” 75/100 zone we aim for
-            on resilient commercial sites.
-          </p>
-        </div>
-      `;
-
-      // MATRIX
-      html += `
-        <div class="scan-matrix">
-          <div class="scan-row">
-            <div class="scan-row-left">
-              <h4>HTTPS reachability</h4>
-              <p>${httpsTech}</p>
-            </div>
-            <div class="scan-row-right">
-              <span class="scan-status-pill scan-status-${statusClass(httpsStatus)}">
-                ${httpsStatus}
-              </span>
-              <p class="scan-row-visual-text">${httpsHuman}</p>
-              <div class="scan-status-strip">
-                ${renderSegments(httpsSegments)}
-              </div>
-            </div>
-          </div>
-
-          <div class="scan-row">
-            <div class="scan-row-left">
-              <h4>Edge / shield in front of your site</h4>
-              <p>${edgeTech}</p>
-            </div>
-            <div class="scan-row-right">
-              <span class="scan-status-pill scan-status-${statusClass(edgeStatus)}">
-                ${edgeStatus}
-              </span>
-              <p class="scan-row-visual-text">${edgeHuman}</p>
-              <div class="scan-status-strip">
-                ${renderSegments(edgeSegments)}
-              </div>
-            </div>
-          </div>
-
-          <div class="scan-row">
-            <div class="scan-row-left">
-              <h4>Round-trip speed (latency)</h4>
-              <p>${speedTech}</p>
-            </div>
-            <div class="scan-row-right">
-              <span class="scan-status-pill scan-status-${statusClass(speedStatus)}">
-                ${speedStatus}
-              </span>
-              <p class="scan-row-visual-text">${speedHuman}</p>
-              <div class="scan-status-strip">
-                ${renderSegments(speedSegments)}
-              </div>
-            </div>
-          </div>
-
-          <div class="scan-row">
-            <div class="scan-row-left">
-              <h4>Hosting signal</h4>
-              <p>${hostingTech}</p>
-            </div>
-            <div class="scan-row-right">
-              <span class="scan-status-pill scan-status-${statusClass(hostingStatus)}">
-                ${hostingStatus}
-              </span>
-              <p class="scan-row-visual-text">${hostingHuman}</p>
-              <div class="scan-status-strip">
-                ${renderSegments(hostingSegments)}
-              </div>
-            </div>
-          </div>
-        </div>
-      `;
-
-      html += `
-        <p class="note" style="margin-top:0.9rem;">
-          This is a high-level automated surface scan using only public information. It does not inspect your
-          internal configuration and does not replace a professional security audit or penetration test.
-        </p>
-      `;
-
-      /* CTA grid: 2 buttons left, 2 right */
-      html += `
-        <div class="scan-actions-grid">
-          <div class="scan-actions-col">
-            <button type="button" class="scan-actions-button primary" id="openRequestFormButton">
-              Request Full AI SEO Security Audit
-            </button>
-            <a class="scan-actions-button" href="mailto:info@urbansentinel.com.au">
-              Email Urban Sentinel
-            </a>
-          </div>
-          <div class="scan-actions-col">
-            <a class="scan-actions-button" href="urban_sentinel_digital_uplift_overview.pdf">
-              Download Digital Security &amp; AI Uplift Overview (PDF)
-            </a>
-            <button type="button" class="scan-actions-button" id="exportPdfButton">
-              Export this report as PDF
-            </button>
-          </div>
-        </div>
-      `;
-
-      html += `
-        <div class="request-form" id="requestFormContainer" style="display:none;">
-          <h3>Request a full AI SEO Security uplift</h3>
-          <p class="note" style="margin-top:0.2rem;">
-            We’ll use your scan results as the starting point and come back with a concrete plan, not a generic sales script.
-          </p>
-          <form id="requestForm">
-            <div class="request-summary">
-              <div>
-                <span>Domain</span>
-                <strong id="requestDomain"></strong>
-              </div>
-              <div>
-                <span>Surface score</span>
-                <strong><span id="requestScore"></span>/100</strong>
-              </div>
-            </div>
-
-            <div class="request-grid">
-              <div class="request-field">
-                <label for="requestName">Your name</label>
-                <input id="requestName" type="text" required />
-              </div>
-              <div class="request-field">
-                <label for="requestCompany">Business name</label>
-                <input id="requestCompany" type="text" />
-              </div>
-              <div class="request-field">
-                <label for="requestEmail">Email</label>
-                <input id="requestEmail" type="email" required />
-              </div>
-              <div class="request-field">
-                <label for="requestPhone">Phone (optional)</label>
-                <input id="requestPhone" type="text" />
-              </div>
-            </div>
-
-            <div class="request-field">
-              <label for="requestMessage">What worries you most right now?</label>
-              <textarea id="requestMessage"></textarea>
-              <small>Examples: site goes down, strange traffic, rankings unstable, need grant-aligned plan, etc.</small>
-            </div>
-
-            <label class="request-checkbox">
-              <input type="checkbox" id="requestGrant" />
-              <span>I’d like you to consider options that can align with relevant grant or advisory programs where possible.</span>
-            </label>
-
-            <label class="request-checkbox">
-              <input type="checkbox" id="requestConsent" required />
-              <span>I agree Urban Sentinel can contact me about this request.</span>
-            </label>
-
-            <button type="submit" class="request-submit">Open request in my email</button>
-          </form>
-        </div>
-      `;
-
-      const projectDescription = `Project title: AI Security & SEO Uplift for ${data.domain}
-
-Summary:
-This project will deliver an AI-driven security and SEO uplift for ${data.domain}, addressing performance, cyber resilience and digital visibility risks identified in the attached AI Security Scan Results report.
-
-Key activities:
-• Hardening hosting, DNS and web application firewall configuration
-• Improving HTTPS reliability, caching and bot / abuse filtering
-• Optimising performance and Core Web Vitals across key templates
-• Fixing technical SEO issues that affect crawl, indexation and stability
-• Documenting changes for ongoing security, maintenance and review
-
-Expected outcomes:
-• Faster, more stable experience for customers and search engines
-• Stronger protection against common cyber incidents and automated attacks
-• Improved visibility and ranking stability in Google over time
-• A clearer digital-risk baseline for future AI and automation projects.`;
-
-      const grantHelperHTML = `
-        <div class="helper-grid">
-          <div class="helper-col helper-card helper-links">
-            <div class="helper-title">Don’t miss this: combine with free advisory support</div>
-            <p>
-              You can combine this report with <strong>free government-funded cyber and digital advisory services</strong>
-              to build a stronger case and plan your uplift:
-            </p>
-            <ul>
-              <li><a href="https://business.gov.au/grants-and-programs" target="_blank" rel="noopener">Australian Government grants &amp; programs finder</a></li>
-              <li><a href="https://business.gov.au/expertise-and-advice/small-business-cyber-resilience-service" target="_blank" rel="noopener">Small Business Cyber Resilience Service – free 1:1 cyber help</a></li>
-              <li><a href="https://www.business.qld.gov.au/running-business/support-services/financial/grants" target="_blank" rel="noopener">Business Queensland – small business grants &amp; schedules</a></li>
-              <li><a href="https://www.grants.services.qld.gov.au/" target="_blank" rel="noopener">Queensland Government Grants Finder</a></li>
-            </ul>
-            <small>
-              These services are independent of Urban Sentinel. We provide the technical uplift and documentation;
-              they help you navigate funding and broader resilience planning.
-            </small>
-          </div>
-          <div class="helper-col helper-card">
-            <div class="helper-title">Grant Application Helper</div>
-            <ol style="font-size:0.86rem; padding-left:1.1rem; margin:0 0 0.5rem;">
-              <li>Export or print this report as a PDF.</li>
-              <li>Attach it to your grant or advisory application.</li>
-              <li>Copy the text below into the “Project summary / Need for funding” box.</li>
-            </ol>
-            <textarea id="grantDescription" class="helper-textarea">${projectDescription}</textarea>
-            <button type="button" class="helper-btn" onclick="copyGrantDescription()">Copy text</button>
-          </div>
-        </div>
-      `;
-
-      html += grantHelperHTML;
-
-      resultEl.innerHTML = html;
-      resultEl.style.display = "block";
-
-      // wire up buttons + form
-      const exportBtn = document.getElementById("exportPdfButton");
-      if (exportBtn) {
-        exportBtn.onclick = () => window.print();
-      }
-
-      const openBtn = document.getElementById("openRequestFormButton");
-      const formContainer = document.getElementById("requestFormContainer");
-      const requestForm = document.getElementById("requestForm");
-
-      const domainSpan = document.getElementById("requestDomain");
-      const scoreSpan = document.getElementById("requestScore");
-
-      if (domainSpan) domainSpan.textContent = data.domain;
-      if (scoreSpan) scoreSpan.textContent = data.score;
-
-      if (openBtn && formContainer) {
-        openBtn.onclick = () => {
-          formContainer.style.display = "block";
-          formContainer.scrollIntoView({ behavior: "smooth", block: "start" });
-        };
-      }
-
-      if (requestForm) {
-        requestForm.onsubmit = (e) => {
-          e.preventDefault();
-          const name = document.getElementById("requestName").value.trim();
-          const company = document.getElementById("requestCompany").value.trim();
-          const email = document.getElementById("requestEmail").value.trim();
-          const phone = document.getElementById("requestPhone").value.trim();
-          const message = document.getElementById("requestMessage").value.trim();
-          const wantsGrant = document.getElementById("requestGrant").checked;
-          const consent = document.getElementById("requestConsent").checked;
-
-          if (!email || !email.includes("@")) {
-            alert("Please add a valid email address.");
-            return;
-          }
-          if (!consent) {
-            alert("Please tick the consent box so we know we’re allowed to contact you.");
-            return;
-          }
-
-          const subject = `AI SEO Security uplift request – ${data.domain}`;
-          let body = `Hi Urban Sentinel,\n\nI'd like a full AI SEO Security uplift based on my scan results.\n\nDomain: ${data.domain}\nSurface score: ${data.score}/100\nSpeed: ${data.speedCategory}\nRisk level: ${riskLabel}\n\nName: ${name || "(not provided)"}\nBusiness: ${company || "(not provided)"}\nEmail: ${email}\nPhone: ${phone || "(not provided)"}\n\nWhat worries me most:\n${message || "(not provided)"}\n\nGrant alignment: ${
-            wantsGrant
-              ? "Yes – please consider options that align with grant/advisory programs if relevant."
-              : "Not essential – I mainly care about the uplift itself."
-          }\n\nThank you.`;
-
-          const mailto =
-            "mailto:info@urbansentinel.com.au" +
-            `?subject=${encodeURIComponent(subject)}` +
-            `&body=${encodeURIComponent(body)}`;
-
-          window.location.href = mailto;
-        };
-      }
-
-      requestAnimationFrame(() => {
-        resultEl.classList.add("visible");
-      });
-
-      window.location.hash = "scan=" + encodeURIComponent(data.domain);
-    }
-
-    async function runScan(domain) {
-      errorEl.style.display = "none";
-      resultEl.style.display = "none";
-      resultEl.classList.remove("visible");
-
-      button.disabled = true;
-      button.textContent = "Scanning…";
-
-      try {
-        const [dnsInfo, latencyInfo] = await Promise.all([
-          lookupDns(domain),
-          measureLatency(domain),
-        ]);
-
-        let hostingInfo = null;
-        if (dnsInfo.ip) {
-          hostingInfo = await lookupHosting(dnsInfo.ip);
-        }
-
-        const speedCategory = classifySpeed(latencyInfo.latencyMs);
-        const score = buildScore(
-          latencyInfo.latencyMs,
-          dnsInfo.usesCloudflare,
-          hostingInfo
-        );
-
-        const data = {
-          domain,
-          latencyMs: latencyInfo.latencyMs,
-          httpsWorking: latencyInfo.httpsWorking,
-          usesCloudflare: dnsInfo.usesCloudflare,
-          hostingInfo,
-          speedCategory,
-          score,
-        };
-
-        renderResult(data);
-      } catch (err) {
-        console.error(err);
-        errorEl.textContent =
-          "Scan failed. Please try again later or contact Urban Sentinel directly.";
-        errorEl.style.display = "block";
-      } finally {
-        button.disabled = false;
-        button.textContent = "Run surface scan";
-      }
-    }
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const raw = domainInput.value;
-      const domain = normaliseDomain(raw);
-
-      if (!domain) {
-        errorEl.textContent =
-          "Please enter a domain (for example: example.com).";
-        errorEl.style.display = "block";
-        return;
-      }
-
-      await runScan(domain);
-    });
-
-    // Permalink: auto-run if #scan=domain present
-    window.addEventListener("load", () => {
-      const hash = window.location.hash || "";
-      if (hash.startsWith("#scan=")) {
-        const domain = decodeURIComponent(hash.replace("#scan=", ""));
-        if (domain) {
-          domainInput.value = domain;
-          runScan(domain);
-          document.getElementById("scan").scrollIntoView({ behavior: "smooth" });
-        }
-      }
-    });
-  </script>
-</body>
-</html>
+      border-radi
